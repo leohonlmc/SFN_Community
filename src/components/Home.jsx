@@ -19,7 +19,7 @@ function Home() {
             SCARBOROUGH FOOD NETWORK <br />
             Community
           </h1>
-          <div className="connect-btn-div">
+          <div className="connect-btn-div" onClick={() => navigate("/news")}>
             <button className="btn btn-success connect-btn">Connect</button>
           </div>
           <div style={{ padding: "10px 0px 10px 0px" }}>
@@ -54,13 +54,18 @@ function Home() {
             We invite your organization to join and gather together, connecting
             with each other and share our mission from our new feed.
           </p>
-          <ul className="bullet-point" style={{ color: "white" }}>
-            <li>Share your social impact and activity through new feed</li>
-            <li>We connect for more potential collaboration</li>
-            <li>To maximize your organization exposure</li>
-          </ul>
 
-          <button className="btn btn-success">I'm joining!</button>
+          <div className="bullet-point-div" style={{ margin: "20px 0px" }}>
+            <ul className="bullet-point" style={{ color: "white" }}>
+              <li>Share your social impact and activity through new feed</li>
+              <li>We connect for more potential collaboration</li>
+              <li>To maximize your organization exposure</li>
+            </ul>
+          </div>
+
+          <div style={{ margin: "10px 0px" }}>
+            <button className="btn btn-success">I'm joining!</button>
+          </div>
         </div>
         <div className="flexbox" style={{ flex: 1 }}>
           <img
