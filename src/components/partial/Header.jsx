@@ -62,6 +62,14 @@ function Header(props) {
                 </a>
               </li>
 
+              {localStorage.getItem("token") ? null : (
+                <li className="nav-item active">
+                  <a className="nav-link" href="/#/news">
+                    News Feed
+                  </a>
+                </li>
+              )}
+
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
