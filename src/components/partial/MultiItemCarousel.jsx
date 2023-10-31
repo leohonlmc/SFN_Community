@@ -82,21 +82,20 @@ function MultiItemCarousel() {
 }
 
 const CarouselCard = ({ info }) => (
-  <Card className="mx-2">
+  <Card className="mx-2 carousel-card">
     <Card.Img
       variant="top"
       src={info.src}
       style={{
-        width: "250px",
-        height: "130px",
+        width: "100%",
         textAlign: "center",
         margin: "auto",
       }}
     />
-    <Card.Body>
+    <Card.Body className="carousel-card-body">
       <Card.Title>{info.title}</Card.Title>
       <br />
-      <Link to={info.link}>
+      <Link to={info.link} className="carousel-card-button">
         <Button variant="success">Check it out</Button>
       </Link>
     </Card.Body>

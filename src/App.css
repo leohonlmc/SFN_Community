@@ -35,10 +35,38 @@
   margin: 50px 0px;
 }
 
+.carousel-card {
+  position: relative;
+  flex: 1;
+  max-width: 250px;
+  height: 280px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-btn-wrapper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+
+.carousel-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0px 0px 0px !important;
+}
+
+.carousel-card-button {
+  margin-top: auto;
+}
+
 .cards-wrapper {
   display: flex;
   justify-content: center;
-  min-height: 280px;
+  align-items: flex-start;
 }
 
 .card img {
