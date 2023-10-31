@@ -40,7 +40,13 @@ function Home() {
 
       <div className="slogan-div">
         <div className="flexbox" style={{ flex: 1, paddingRight: "20px" }}>
-          <h2 style={{ margin: "0px", fontWeight: "bold", color: "white" }}>
+          <h2
+            style={{
+              margin: "0px",
+              fontWeight: "bold",
+              color: "white",
+            }}
+          >
             The more we <span className="green-text">gather</span>, the more we{" "}
             <span className="green-text">provide</span>.
           </h2>
