@@ -1,0 +1,30 @@
+.navbar.navbar-expand-lg.navbar-light.bg-light {
+  padding: 15 20px;
+  background-color: #4b4f58 !important;
+  margin: auto;
+  box-shadow: none;
+}
+
+.outer-header-div {
+  background-color: #4b4f58 !important;
+}
+
+.navbar-toggler-icon {
+  background-color: red;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+@media (min-width: 922px) {
+  .navbar.navbar-expand-lg.navbar-light.bg-light {
+    max-width: 1240px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar.navbar-expand-lg.navbar-light.bg-light {
+    padding: 15px 20px;
+  }
+}

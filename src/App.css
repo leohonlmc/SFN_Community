@@ -1,0 +1,41 @@
+.sfn-container {
+  min-height: 530px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("http://scarboroughfoodnetwork.ca/wp-content/uploads/2022/01/home-1-e1643218266171.jpeg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sub-sfn-container {
+  padding: 30px 2.5%;
+  width: 50%;
+  text-align: center;
+  background-color: rgba(231, 231, 231, 0.8);
+  border-radius: 20px;
+}
+
+.connect-btn-div {
+  padding: 20px;
+  padding-bottom: 0px;
+}
+
+.text {
+  color: rgb(52, 52, 52);
+}
+
+.sfn {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .sub-sfn-container {
+    width: 90%;
+  }
+  .sfn-container {
+    min-height: 500px;
+  }
+}
