@@ -64,7 +64,7 @@ function NewFeed() {
               </div>
 
               <div class=" documents">
-                <input type="file" name="" id="" />
+                <input type="file" name="" id="" style={{ width: "100%" }} />
               </div>
             </div>
 
