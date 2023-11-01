@@ -134,7 +134,8 @@
   .sfn-container {
     min-height: 500px;
   }
-  .bullet-point-div {
+  .bullet-point-div,
+  .slogan-des {
     display: none;
   }
 }

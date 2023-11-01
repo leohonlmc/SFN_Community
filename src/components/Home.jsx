@@ -50,11 +50,13 @@ function Home() {
             The more we <span className="green-text">gather</span>, the more we{" "}
             <span className="green-text">provide</span>.
           </h2>
-          <p style={{ color: "white", marginTop: "10px" }}>
-            We warmly invite your esteemed organization to join our
-            collaborative platform. Connect, engage, and align with like-minded
-            entities as we collectively amplify our missions through our latest
-            news feed.
+
+          <p
+            className="slogan-des"
+            style={{ color: "white", marginTop: "10px" }}
+          >
+            We warmly invite your organization to our platform. Connect and
+            align with peers, amplifying our missions through our news feed.
           </p>
 
           <div className="bullet-point-div" style={{ margin: "20px 0px" }}>
@@ -74,7 +76,7 @@ function Home() {
           </div>
 
           <div
-            style={{ margin: "10px 0px" }}
+            style={{ margin: "25px 0px" }}
             onClick={() => navigate("/login")}
           >
             <button className="btn btn-success">I'm joining!</button>
@@ -84,7 +86,7 @@ function Home() {
           <img
             src="fruit.png"
             alt="Fruit Image"
-            style={{ maxWidth: "70%", height: "auto" }}
+            style={{ maxWidth: "80%", height: "auto" }}
           />
         </div>
       </div>

@@ -4,9 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./partial/Header";
 import Footer from "./partial/Footer";
 import { useNavigate, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 function NewFeed() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // if (!localStorage.getItem("token")) {
@@ -29,11 +32,11 @@ function NewFeed() {
               />
               <p style={{ marginTop: "10px" }}>Username</p>
               <p>Represent of</p>
-              <div className="user-setting">
+              <div className="user-setting" style={{ textAlign: "left" }}>
                 <hr />
-                <p>News Feed</p>
-                <p>My post</p>
-                <p>Setting</p>
+                <p style={{ margin: "10px 0px" }}>News Feed</p>
+                <p style={{ margin: "10px 0px" }}>My post</p>
+                <p style={{ margin: "10px 0px" }}>Setting</p>
               </div>
             </div>
           </div>
@@ -69,8 +72,13 @@ function NewFeed() {
             </div>
 
             <hr />
-
-            <div className="new-feed-div"></div>
+            {loading ? (
+              <div className="spin-div">
+                <FontAwesomeIcon icon={faSpinner} size="xl" spin />
+              </div>
+            ) : (
+              <div className="new-feed-div"></div>
+            )}
           </div>
 
           <div class="col-md-2">
