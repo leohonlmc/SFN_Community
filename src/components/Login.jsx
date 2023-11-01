@@ -50,7 +50,7 @@ function Login() {
 
                         <div class="text-center pt-1 mb-5 pb-1">
                           <button
-                            class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                            class="btn btn-success btn-block fa-lg gradient-custom-2 mb-3"
                             type="button"
                           >
                             Log in
@@ -58,7 +58,7 @@ function Login() {
                         </div>
 
                         <div class="d-flex align-items-center justify-content-center pb-4">
-                          <p class="mb-0 me-2">Don't have an account?</p>
+                          <p class="mb-0 me-2">Our future client?</p>
                           <button type="button" class="btn btn-outline-danger">
                             Create new
                           </button>
@@ -73,7 +73,7 @@ function Login() {
                         <strong>Scarborough Food Network (SFN)</strong> is
                         dedicated to bridging Food Banks with communities,
                         fostering a cohesive network to combat hunger and ensure
-                        everyone has access to nutritious meals.
+                        everyone has access to nutritious meals. 🌎
                       </p>
                     </div>
                   </div>

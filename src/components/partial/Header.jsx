@@ -92,11 +92,28 @@ function Header(props) {
                 </div>
               </li>
             </ul>
-            <div className="d-flex">
-              <Link to="/login" className="btn btn-outline-success me-2">
-                Client Login
-              </Link>
-            </div>
+            {localStorage.getItem("token") ? (
+              <div className="d-flex justify-content-center align-items-center">
+                <p className="m-0 mr-2" style={{ color: "white" }}>
+                  Welcome back!
+                </p>
+                <img
+                  src="/user.jpeg"
+                  alt=""
+                  style={{
+                    width: "50px",
+                    borderRadius: "50%",
+                    marginLeft: "10px",
+                  }}
+                />
+              </div>
+            ) : (
+              <div className="d-flex">
+                <Link to="/login" className="btn btn-outline-success me-2">
+                  Client Login
+                </Link>
+              </div>
+            )}
           </div>
         </nav>
       </div>

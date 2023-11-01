@@ -10,6 +10,11 @@
   border: 1px solid grey !important;
 }
 
+.btn.btn-success.btn-block.fa-lg.gradient-custom-2.mb-3 {
+  border: none !important;
+  box-shadow: none !important;
+}
+
 @media (min-width: 769px) {
   .gradient-custom-2 {
     border-top-right-radius: 0.3rem;

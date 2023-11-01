@@ -51,19 +51,32 @@ function Home() {
             <span className="green-text">provide</span>.
           </h2>
           <p style={{ color: "white", marginTop: "10px" }}>
-            We invite your organization to join and gather together, connecting
-            with each other and share our mission from our new feed.
+            We warmly invite your esteemed organization to join our
+            collaborative platform. Connect, engage, and align with like-minded
+            entities as we collectively amplify our missions through our latest
+            news feed.
           </p>
 
           <div className="bullet-point-div" style={{ margin: "20px 0px" }}>
             <ul className="bullet-point" style={{ color: "white" }}>
-              <li>Share your social impact and activity through new feed</li>
-              <li>We connect for more potential collaboration</li>
-              <li>To maximize your organization exposure</li>
+              <li>
+                Showcase your organization's social impact and initiatives with
+                our dedicated audience.
+              </li>
+              <li>
+                Foster meaningful connections, paving the way for potential
+                collaborations.
+              </li>
+              <li>
+                Enhance your organization's visibility and broaden its reach.
+              </li>
             </ul>
           </div>
 
-          <div style={{ margin: "10px 0px" }}>
+          <div
+            style={{ margin: "10px 0px" }}
+            onClick={() => navigate("/login")}
+          >
             <button className="btn btn-success">I'm joining!</button>
           </div>
         </div>
