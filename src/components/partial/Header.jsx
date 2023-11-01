@@ -93,7 +93,7 @@ function Header(props) {
               </li>
             </ul>
             <div className="d-flex">
-              <Link to="/login" className="btn btn-primary me-2">
+              <Link to="/login" className="btn btn-outline-success me-2">
                 Client Login
               </Link>
             </div>
