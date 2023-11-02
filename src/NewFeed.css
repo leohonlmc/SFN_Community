@@ -1,5 +1,6 @@
 .News {
-  width: 100%;
+  max-width: 1500px;
+  margin: auto;
 }
 
 .container-fluid {
@@ -32,7 +33,6 @@ p {
 }
 
 .new-feed-div {
-  height: 500px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   margin: 10px 0px;
@@ -43,8 +43,73 @@ p {
   text-align: center;
 }
 
+.right {
+  padding: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.user-info {
+  padding: 10px;
+}
+
+.user-info-child {
+  margin-left: 10px;
+}
+
+.first {
+  font-size: 0.9rem;
+}
+
+.second,
+.third {
+  font-size: 0.8rem;
+}
+
+.news-des {
+  padding: 0px 20px;
+}
+
+.news-img {
+  width: 100%;
+  padding: 10px 60px;
+}
+
+.comment-section {
+  display: flex;
+  padding: 0px 20px;
+}
+
+.like {
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.divider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin: 20px 0; */
+}
+
+.divider-line {
+  flex-grow: 1;
+  border-top: 1px solid rgb(52, 52, 52);
+  margin: 16px;
+}
+
+.divider-text {
+  margin: 0 16px;
+  font-weight: bold;
+}
+
+hr {
+  margin: 10px 0px;
+}
+
 @media screen and (max-width: 768px) {
-  .col-md-8 {
+  .col-md-7,
+  .col-md-2 {
     margin-top: 10px;
   }
   .user-setting {

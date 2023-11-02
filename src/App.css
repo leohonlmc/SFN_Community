@@ -1,3 +1,8 @@
+.Home {
+  max-width: 1500px;
+  margin: auto;
+}
+
 .sfn-container {
   min-height: 530px;
   display: flex;

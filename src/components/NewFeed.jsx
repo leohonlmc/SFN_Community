@@ -5,7 +5,11 @@ import Header from "./partial/Header";
 import Footer from "./partial/Footer";
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSpinner,
+  faThumbsUp,
+  faCommentDots,
+} from "@fortawesome/free-solid-svg-icons";
 
 function NewFeed() {
   const navigate = useNavigate();
@@ -41,7 +45,7 @@ function NewFeed() {
             </div>
           </div>
 
-          <div class="col-md-8">
+          <div class="col-md-7">
             <div class="new-post-div d-flex flex-column">
               <div class="d-flex align-items-center">
                 <div>
@@ -71,25 +75,106 @@ function NewFeed() {
               </div>
             </div>
 
-            <hr />
-            {loading ? (
+            <div className="divider-container">
+              <hr className="divider-line" />
+              <p>
+                <strong>News Feed</strong>
+              </p>
+              <hr className="divider-line" />
+            </div>
+
+            {!loading ? (
               <div className="spin-div">
                 <FontAwesomeIcon icon={faSpinner} size="xl" spin />
               </div>
             ) : (
-              <div className="new-feed-div"></div>
+              <div className="new-feed-div">
+                <div className="sample-new-feed">
+                  <div className="user-info d-flex align-items-start">
+                    <img
+                      src="/user.jpeg"
+                      alt=""
+                      style={{ width: "50px", borderRadius: "50%" }}
+                    />
+                    <div className="user-info-child">
+                      <p className="first">Username</p>
+                      <p className="second">Represent of</p>
+                      <p className="third">1 day ago</p>
+                    </div>
+                  </div>
+
+                  <p className="news-des">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus lobortis enim ac leo dapibus, at dignissim risus
+                    fringilla. Duis blandit sit amet metus et ultricies. Nam
+                    euismod mauris id eros pharetra egestas. Quisque consequat
+                    cursus elit a pharetra. Curabitur pulvinar, purus et mattis
+                    lobortis, neque purus fermentum magna, in aliquet nisi sem
+                    sit amet est. Nam molestie gravida velit non ullamcorper.
+                    Cras consectetur vehicula mauris eu euismod. Duis non
+                    suscipit nisi, et consectetur odio.
+                  </p>
+
+                  <img
+                    src="https://raisincdn.akaraisin.com/Org_307/EventLocation_22274/Public/oi8nx9169.jpg"
+                    alt=""
+                    className="news-img"
+                  />
+
+                  <div className="comment-section">
+                    <div className="like">
+                      <img
+                        src="/user.jpeg"
+                        alt=""
+                        className="current-user"
+                        style={{ width: "30px" }}
+                      />
+                    </div>
+                    <div className="like">
+                      <FontAwesomeIcon
+                        icon={faThumbsUp}
+                        size="xl"
+                        style={{ marginRight: "5px" }}
+                      />
+                      Like
+                    </div>
+
+                    <div className="like">
+                      <FontAwesomeIcon
+                        icon={faCommentDots}
+                        size="xl"
+                        style={{ marginRight: "5px" }}
+                      />
+                      Comment
+                    </div>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
 
-          <div class="col-md-2">
-            <div>
+          <div class="col-md-3">
+            <div className="right">
               <p>Community News</p>
+              <hr />
+              <div>
+                <img
+                  src="https://www.ctvnews.ca/content/dam/ctvnews/en/images/2023/10/25/a-group-loads-food-1-6616570-1698254317690.jpg"
+                  alt=""
+                  style={{ width: "100%" }}
+                />
+                <a href="https://www.ctvnews.ca/canada/more-canadian-households-struggling-to-put-food-on-the-table-due-to-high-cost-of-living-report-1.6616564">
+                  More Canadian households struggling to put food on the table
+                  due to high cost of living: report
+                </a>
+
+                <p>Oct. 25, 2023 1:18 p.m.</p>
+              </div>
             </div>
+            <Footer />
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

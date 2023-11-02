@@ -1,3 +1,8 @@
+.Login {
+  max-width: 1500px;
+  margin: auto;
+}
+
 .gradient-custom-2 {
   background: #6b8e23;
   background: -webkit-linear-gradient(to right, #006400, #228b22, #ff8c00);
