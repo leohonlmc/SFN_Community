@@ -10,10 +10,12 @@ import {
   faThumbsUp,
   faCommentDots,
 } from "@fortawesome/free-solid-svg-icons";
+import NewPost from "./popup/NewPost";
 
 function NewFeed() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     // if (!localStorage.getItem("token")) {
@@ -25,9 +27,11 @@ function NewFeed() {
     <div className="News">
       <Header title="News Feed | SFN Community" />
 
-      <div class="container-fluid mt-4">
-        <div class="row">
-          <div class="col-md-2">
+      {showPopup && <NewPost setShowPopup={setShowPopup} />}
+
+      <div className="container-fluid mt-4">
+        <div className="row">
+          <div className="col-md-2">
             <div className="profile">
               <img
                 src="/user.jpeg"
@@ -45,9 +49,9 @@ function NewFeed() {
             </div>
           </div>
 
-          <div class="col-md-7">
-            <div class="new-post-div d-flex flex-column">
-              <div class="d-flex align-items-center">
+          <div className="col-md-7">
+            <div className="new-post-div d-flex flex-column">
+              <div className="d-flex align-items-center">
                 <div>
                   <img
                     src="/user.jpeg"
@@ -55,7 +59,10 @@ function NewFeed() {
                     style={{ width: "50px", borderRadius: "50%" }}
                   />
                 </div>
-                <div style={{ flex: 1, marginLeft: "10px" }}>
+                <div
+                  style={{ flex: 1, marginLeft: "10px" }}
+                  onClick={() => setShowPopup(true)}
+                >
                   <input
                     type="text"
                     style={{
@@ -70,7 +77,7 @@ function NewFeed() {
                 </div>
               </div>
 
-              <div class=" documents">
+              <div className=" documents">
                 <input type="file" name="" id="" style={{ width: "100%" }} />
               </div>
             </div>
@@ -214,7 +221,7 @@ function NewFeed() {
             )}
           </div>
 
-          <div class="col-md-3">
+          <div className="col-md-3">
             <div className="right">
               <p>Community News</p>
               <hr />
