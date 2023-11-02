@@ -149,6 +149,67 @@ function NewFeed() {
                     </div>
                   </div>
                 </div>
+
+                <div className="sample-new-feed">
+                  <div className="user-info d-flex align-items-start">
+                    <img
+                      src="/user.jpeg"
+                      alt=""
+                      style={{ width: "50px", borderRadius: "50%" }}
+                    />
+                    <div className="user-info-child">
+                      <p className="first">Username</p>
+                      <p className="second">Represent of</p>
+                      <p className="third">1 day ago</p>
+                    </div>
+                  </div>
+
+                  <p className="news-des">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus lobortis enim ac leo dapibus, at dignissim risus
+                    fringilla. Duis blandit sit amet metus et ultricies. Nam
+                    euismod mauris id eros pharetra egestas. Quisque consequat
+                    cursus elit a pharetra. Curabitur pulvinar, purus et mattis
+                    lobortis, neque purus fermentum magna, in aliquet nisi sem
+                    sit amet est. Nam molestie gravida velit non ullamcorper.
+                    Cras consectetur vehicula mauris eu euismod. Duis non
+                    suscipit nisi, et consectetur odio.
+                  </p>
+
+                  <img
+                    src="https://raisincdn.akaraisin.com/Org_307/EventLocation_22274/Public/oi8nx9169.jpg"
+                    alt=""
+                    className="news-img"
+                  />
+
+                  <div className="comment-section">
+                    <div className="like">
+                      <img
+                        src="/user.jpeg"
+                        alt=""
+                        className="current-user"
+                        style={{ width: "30px" }}
+                      />
+                    </div>
+                    <div className="like">
+                      <FontAwesomeIcon
+                        icon={faThumbsUp}
+                        size="xl"
+                        style={{ marginRight: "5px" }}
+                      />
+                      Like
+                    </div>
+
+                    <div className="like">
+                      <FontAwesomeIcon
+                        icon={faCommentDots}
+                        size="xl"
+                        style={{ marginRight: "5px" }}
+                      />
+                      Comment
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
