@@ -5,9 +5,19 @@ import Header from "./partial/Header";
 import Footer from "./partial/Footer";
 import { useNavigate, Link } from "react-router-dom";
 import MultiItemCarousel from "./partial/MultiItemCarousel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSpinner,
+  faThumbsUp,
+  faCommentDots,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
   const navigate = useNavigate();
+  const [des, setDes] = useState(
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lobortis enim ac leo dapibus, at dignissim risus fringilla. Duis blandit sit amet metus et ultricies. Nam euismod mauris id eros pharetra egestas. Quisque consequat cursus elit a pharetra. Curabitur pulvinar, purus et mattis lobortis, neque purus fermentum magna, in aliquet nisi sem sit amet est. Nam molestie gravida velit non ullamcorper. Cras consectetur vehicula mauris eu euismod. Duis non suscipit nisi, et consectetur odio."
+  );
 
   return (
     <div className="Home">
@@ -90,7 +100,128 @@ function Home() {
           />
         </div>
       </div>
+      <div className="row demo-new-post">
+        <div style={{ margin: "10px 0px" }}>
+          <h2 style={{ textAlign: "center" }}>
+            <strong>Let's gather and expand the network</strong>{" "}
+          </h2>
+        </div>
 
+        <div className="col-md-6 col-12">
+          <div className="sample-new-feed">
+            <div className="user-info d-flex align-items-start">
+              <img
+                src="/user.jpeg"
+                alt=""
+                style={{ width: "50px", borderRadius: "50%" }}
+              />
+              <div className="user-info-child">
+                <p className="first">Username</p>
+                <p className="second">Represent of</p>
+                <p className="third">1 day ago</p>
+              </div>
+            </div>
+
+            <p className="news-des">{des}</p>
+
+            <img
+              src="https://raisincdn.akaraisin.com/Org_307/EventLocation_22274/Public/oi8nx9169.jpg"
+              alt=""
+              className="news-img"
+            />
+
+            <div className="comment-section">
+              <div className="like">
+                <img
+                  src="/user.jpeg"
+                  alt=""
+                  className="current-user"
+                  style={{ width: "30px" }}
+                />
+              </div>
+              <div className="like">
+                <FontAwesomeIcon
+                  icon={faThumbsUp}
+                  size="lg"
+                  style={{ marginRight: "5px" }}
+                />
+                Like
+              </div>
+
+              <div className="like">
+                <FontAwesomeIcon
+                  icon={faCommentDots}
+                  size="lg"
+                  style={{ marginRight: "5px" }}
+                />
+                Comment
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-6 col-12">
+          <div className="popup demo-popup">
+            <div
+              className="d-flex"
+              style={{
+                width: "100%",
+                padding: "24px 24px 24px 24px",
+                height: "100%",
+              }}
+            >
+              <div style={{ width: "100%" }}>
+                <div className="d-flex">
+                  <div>
+                    <img
+                      src="/user.jpeg"
+                      alt=""
+                      style={{ width: "70px", borderRadius: "50%" }}
+                    />
+                  </div>
+                  <div style={{ marginLeft: "10px" }}>
+                    <p style={{ margin: "0px" }}>Username</p>
+                    <p style={{ margin: "0px" }}>Post to community</p>
+                  </div>
+                </div>
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="7"
+                  style={{
+                    width: "100%",
+                    marginTop: "20px",
+                    padding: "10px",
+                    border: "none",
+                    outline: "none",
+                  }}
+                  maxLength="1000"
+                  placeholder="What's on your mind?"
+                  value={des}
+                  onChange={(e) => setDes(e.target.value)}
+                ></textarea>
+
+                <p
+                  style={{ textAlign: "right", margin: "0px" }}
+                >{`/1000 Characters`}</p>
+
+                <hr />
+
+                <div className="d-flex" style={{ justifyContent: "flex-end" }}>
+                  <button className="btn btn-secondary">Post</button>
+                </div>
+              </div>
+              <div className="ml12 aside-cta flex--item print:d-none">
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  style={{ cursor: "pointer" }}
+                  size="lg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   );

@@ -50,7 +50,7 @@ function MultiItemCarousel() {
   }
 
   function getNumCards() {
-    return window.innerWidth < 768 ? 2 : 3;
+    return window.innerWidth < 768 ? 2 : 4;
   }
 
   const totalSlides = Math.ceil(imagesrc.length / numCards);

@@ -201,7 +201,7 @@ function NewFeed() {
                     <div className="like">
                       <FontAwesomeIcon
                         icon={faThumbsUp}
-                        size="xl"
+                        size="lg"
                         style={{ marginRight: "5px" }}
                       />
                       Like
@@ -210,7 +210,7 @@ function NewFeed() {
                     <div className="like">
                       <FontAwesomeIcon
                         icon={faCommentDots}
-                        size="xl"
+                        size="lg"
                         style={{ marginRight: "5px" }}
                       />
                       Comment

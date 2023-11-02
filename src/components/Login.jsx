@@ -31,13 +31,14 @@ function Login() {
                             style={{ width: "185px" }}
                             alt="logo"
                           />
-                          <h4 class="mt-1 mb-5 pb-1">We are The Community</h4>
+                          <h4 class="mt-1 mb-5 pb-1">Account register</h4>
                         </div>
 
                         <form>
-                          <p>Please create your account</p>
-
                           <div class="form-outline mb-4">
+                            <p style={{ textAlign: "right" }}>
+                              Please fill in all area *
+                            </p>
                             <input
                               type="email"
                               class="form-control"

@@ -132,6 +132,16 @@
   color: #00a651;
 }
 
+.demo-new-post {
+  width: 95%;
+  margin: 30px auto !important;
+}
+
+.demo-popup {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 @media screen and (max-width: 768px) {
   .sub-sfn-container {
     width: 90%;
