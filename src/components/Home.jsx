@@ -7,7 +7,6 @@ import { useNavigate, Link } from "react-router-dom";
 import MultiItemCarousel from "./partial/MultiItemCarousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faSpinner,
   faThumbsUp,
   faCommentDots,
   faXmark,
@@ -15,9 +14,7 @@ import {
 
 function Home() {
   const navigate = useNavigate();
-  const [des, setDes] = useState(
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lobortis enim ac leo dapibus, at dignissim risus fringilla. Duis blandit sit amet metus et ultricies. Nam euismod mauris id eros pharetra egestas. Quisque consequat cursus elit a pharetra. Curabitur pulvinar, purus et mattis lobortis, neque purus fermentum magna, in aliquet nisi sem sit amet est. Nam molestie gravida velit non ullamcorper. Cras consectetur vehicula mauris eu euismod. Duis non suscipit nisi, et consectetur odio."
-  );
+  const [des, setDes] = useState("Write something here...");
 
   return (
     <div className="Home">
@@ -95,7 +92,7 @@ function Home() {
         <div className="flexbox" style={{ flex: 1 }}>
           <img
             src="fruit.png"
-            alt="Fruit Image"
+            alt="Fruit"
             style={{ maxWidth: "80%", height: "auto" }}
           />
         </div>
@@ -144,6 +141,7 @@ function Home() {
                   icon={faThumbsUp}
                   size="lg"
                   style={{ marginRight: "5px" }}
+                  bounce
                 />
                 Like
               </div>
@@ -203,20 +201,13 @@ function Home() {
 
                 <p
                   style={{ textAlign: "right", margin: "0px" }}
-                >{`/1000 Characters`}</p>
+                >{`${des.length}/1000 Characters`}</p>
 
                 <hr />
 
                 <div className="d-flex" style={{ justifyContent: "flex-end" }}>
                   <button className="btn btn-secondary">Post</button>
                 </div>
-              </div>
-              <div className="ml12 aside-cta flex--item print:d-none">
-                <FontAwesomeIcon
-                  icon={faXmark}
-                  style={{ cursor: "pointer" }}
-                  size="lg"
-                />
               </div>
             </div>
           </div>
