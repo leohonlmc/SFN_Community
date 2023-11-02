@@ -7,10 +7,15 @@ const { REACT_APP_API_ENDPOINT, REACT_APP_AWS } = process.env;
 
 const NewPost = ({ setShowPopup, ...props }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(true);
+  const [des, setDes] = useState("");
 
   const closePopup = () => {
     setIsPopupVisible(false);
     setShowPopup(false);
+  };
+
+  const handleChange = (e) => {
+    setDes(e.target.value);
   };
 
   return (
@@ -21,7 +26,7 @@ const NewPost = ({ setShowPopup, ...props }) => {
             className="d-flex"
             style={{
               width: "100%",
-              padding: "24px 24px 0px 24px",
+              padding: "24px 24px 24px 24px",
               height: "100%",
             }}
           >
@@ -51,8 +56,14 @@ const NewPost = ({ setShowPopup, ...props }) => {
                   border: "none",
                   outline: "none",
                 }}
+                maxLength="1000"
                 placeholder="What's on your mind?"
+                onChange={handleChange}
               ></textarea>
+
+              <p
+                style={{ textAlign: "right", margin: "0px" }}
+              >{`${des.length}/1000 Characters`}</p>
 
               <div className=" documents" style={{ marginBottom: "20px" }}>
                 <input type="file" name="" id="" style={{ width: "100%" }} />
@@ -94,7 +105,6 @@ const NewPost = ({ setShowPopup, ...props }) => {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             z-index: 9999;
             width: 60%;
-            height: 60%;
             border-radius: 10px;
           }
 

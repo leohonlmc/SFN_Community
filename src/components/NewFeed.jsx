@@ -85,7 +85,7 @@ function NewFeed() {
             <div className="divider-container">
               <hr className="divider-line" />
               <p>
-                <strong>News Feed</strong>
+                <strong>News Feed - Sort by Newest</strong>
               </p>
               <hr className="divider-line" />
             </div>
