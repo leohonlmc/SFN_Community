@@ -104,7 +104,7 @@ function Home() {
           </h2>
         </div>
 
-        <div className="col-md-6 col-12">
+        <div className="col-md-6 col-12 demo-post">
           <div className="sample-new-feed">
             <div className="user-info d-flex align-items-start">
               <img
@@ -157,7 +157,7 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="col-md-6 col-12">
+        <div className="col-md-6 col-12 demo-post">
           <div className="popup demo-popup">
             <div
               className="d-flex"

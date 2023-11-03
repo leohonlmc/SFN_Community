@@ -142,6 +142,15 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.col-md-6.col-12.demo-post {
+  padding: 12px;
+  transition: 0.5s;
+}
+
+.col-md-6.col-12.demo-post:hover {
+  padding: 0px;
+}
+
 @media screen and (max-width: 768px) {
   .sub-sfn-container {
     width: 90%;
