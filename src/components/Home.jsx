@@ -14,7 +14,7 @@ import {
 
 function Home() {
   const navigate = useNavigate();
-  const [des, setDes] = useState("Write something here...");
+  const [des, setDes] = useState("Angela, write something here...");
 
   return (
     <div className="Home">
@@ -97,122 +97,133 @@ function Home() {
           />
         </div>
       </div>
-      <div className="row demo-new-post">
-        <div style={{ margin: "10px 0px" }}>
-          <h2 style={{ textAlign: "center" }}>
-            <strong>Let's gather and expand the network</strong>{" "}
-          </h2>
-        </div>
+      <div className="parent-demo-post">
+        <div className="row demo-new-post">
+          <div style={{ margin: "10px 0px" }}>
+            <h2 style={{ textAlign: "center", color: "white" }}>
+              <strong>Let's gather and expand the network ✨</strong>{" "}
+            </h2>
+            <p style={{ textAlign: "center", color: "white" }}>
+              Boost network speed by at least <strong>50%</strong>.
+            </p>
+          </div>
 
-        <div className="col-md-6 col-12 demo-post">
-          <div className="sample-new-feed">
-            <div className="user-info d-flex align-items-start">
-              <img
-                src="/user.jpeg"
-                alt=""
-                style={{ width: "50px", borderRadius: "50%" }}
-              />
-              <div className="user-info-child">
-                <p className="first">Username</p>
-                <p className="second">Represent of</p>
-                <p className="third">1 day ago</p>
-              </div>
-            </div>
-
-            <p className="news-des">{des}</p>
-
-            <img
-              src="https://raisincdn.akaraisin.com/Org_307/EventLocation_22274/Public/oi8nx9169.jpg"
-              alt=""
-              className="news-img"
-            />
-
-            <div className="comment-section">
-              <div className="like">
+          <div className="col-md-6 col-12 demo-post">
+            <div className="sample-new-feed">
+              <div className="user-info d-flex align-items-start">
                 <img
-                  src="/user.jpeg"
+                  src="https://1.img-dpreview.com/files/p/TS560x560~forums/63132016/2a1e59e12f4543bea10f2385259c81cf"
                   alt=""
-                  className="current-user"
-                  style={{ width: "30px" }}
+                  style={{ width: "50px", borderRadius: "50%" }}
                 />
-              </div>
-              <div className="like">
-                <FontAwesomeIcon
-                  icon={faThumbsUp}
-                  size="lg"
-                  style={{ marginRight: "5px" }}
-                  bounce
-                />
-                Like
+                <div className="user-info-child">
+                  <p className="first">Angela</p>
+                  <p className="second">Food Bank Administrator</p>
+                  <p className="third">1 day ago</p>
+                </div>
               </div>
 
-              <div className="like">
-                <FontAwesomeIcon
-                  icon={faCommentDots}
-                  size="lg"
-                  style={{ marginRight: "5px" }}
-                />
-                Comment
+              <p className="news-des">{des}</p>
+
+              <img
+                src="https://raisincdn.akaraisin.com/Org_307/EventLocation_22274/Public/oi8nx9169.jpg"
+                alt=""
+                className="news-img"
+              />
+
+              <div className="comment-section">
+                <div className="like">
+                  <img
+                    src="https://1.img-dpreview.com/files/p/TS560x560~forums/63132016/2a1e59e12f4543bea10f2385259c81cf"
+                    alt=""
+                    className="current-user"
+                    style={{ width: "30px", borderRadius: "50%" }}
+                  />
+                </div>
+                <div className="like">
+                  <FontAwesomeIcon
+                    icon={faThumbsUp}
+                    size="lg"
+                    style={{ marginRight: "5px" }}
+                    bounce
+                  />
+                  Like
+                </div>
+
+                <div className="like">
+                  <FontAwesomeIcon
+                    icon={faCommentDots}
+                    size="lg"
+                    style={{ marginRight: "5px" }}
+                  />
+                  Comment
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="col-md-6 col-12 demo-post">
-          <div className="popup demo-popup">
-            <div
-              className="d-flex"
-              style={{
-                width: "100%",
-                padding: "24px 24px 24px 24px",
-                height: "100%",
-              }}
-            >
-              <div style={{ width: "100%" }}>
-                <div className="d-flex">
-                  <div>
-                    <img
-                      src="/user.jpeg"
-                      alt=""
-                      style={{ width: "70px", borderRadius: "50%" }}
-                    />
+          <div className="col-md-6 col-12 demo-post">
+            <div className="popup demo-popup">
+              <div
+                className="d-flex"
+                style={{
+                  width: "100%",
+                  padding: "24px 24px 24px 24px",
+                  height: "100%",
+                  backgroundColor: "white",
+                  borderRadius: "10px",
+                }}
+              >
+                <div style={{ width: "100%" }}>
+                  <div className="d-flex">
+                    <div>
+                      <img
+                        src="https://1.img-dpreview.com/files/p/TS560x560~forums/63132016/2a1e59e12f4543bea10f2385259c81cf"
+                        alt=""
+                        style={{ width: "70px", borderRadius: "50%" }}
+                      />
+                    </div>
+                    <div style={{ marginLeft: "10px" }}>
+                      <p style={{ margin: "0px" }}>Angela</p>
+                      <p style={{ margin: "0px" }}>Post to community</p>
+                    </div>
                   </div>
-                  <div style={{ marginLeft: "10px" }}>
-                    <p style={{ margin: "0px" }}>Username</p>
-                    <p style={{ margin: "0px" }}>Post to community</p>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="7"
+                    style={{
+                      width: "100%",
+                      marginTop: "20px",
+                      padding: "10px",
+                      border: "none",
+                      outline: "none",
+                    }}
+                    maxLength="1000"
+                    placeholder="What's on your mind?"
+                    value={des}
+                    onChange={(e) => setDes(e.target.value)}
+                  ></textarea>
+
+                  <p
+                    style={{ textAlign: "right", margin: "0px" }}
+                  >{`${des.length}/1000 Characters`}</p>
+
+                  <hr />
+
+                  <div
+                    className="d-flex"
+                    style={{ justifyContent: "flex-end" }}
+                  >
+                    <button className="btn btn-secondary">Post</button>
                   </div>
-                </div>
-                <textarea
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="7"
-                  style={{
-                    width: "100%",
-                    marginTop: "20px",
-                    padding: "10px",
-                    border: "none",
-                    outline: "none",
-                  }}
-                  maxLength="1000"
-                  placeholder="What's on your mind?"
-                  value={des}
-                  onChange={(e) => setDes(e.target.value)}
-                ></textarea>
-
-                <p
-                  style={{ textAlign: "right", margin: "0px" }}
-                >{`${des.length}/1000 Characters`}</p>
-
-                <hr />
-
-                <div className="d-flex" style={{ justifyContent: "flex-end" }}>
-                  <button className="btn btn-secondary">Post</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );

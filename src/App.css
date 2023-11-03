@@ -132,6 +132,11 @@
   color: #00a651;
 }
 
+.parent-demo-post {
+  background: linear-gradient(110deg, #00a651 60%, #333 60%);
+  padding: 10px 0px;
+}
+
 .demo-new-post {
   width: 95%;
   margin: 30px auto !important;
