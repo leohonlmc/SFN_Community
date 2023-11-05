@@ -40,7 +40,7 @@ function Home() {
 
       <div className="food-bank-partners-div">
         <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
-          FOOD BANK PARNTERS
+          FOOD BANK PARTNERS
         </h2>
         <MultiItemCarousel />
       </div>
