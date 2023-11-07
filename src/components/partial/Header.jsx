@@ -135,28 +135,23 @@ function Header(props) {
                   </a>
                 </li>
 
-                {localStorage.getItem("token") ? null : (
-                  <li className="nav-item active">
-                    <a className="nav-link" href="/#/booking">
-                      Booking
-                    </a>
-                  </li>
-                )}
+                <li className="nav-item active">
+                  <a className="nav-link" href="/#/food">
+                    Food Tracking
+                  </a>
+                </li>
               </ul>
               {localStorage.getItem("token") ? (
                 <div className="d-flex justify-content-center align-items-center">
-                  <p className="m-0 mr-2" style={{ color: "white" }}>
-                    Welcome back!
-                  </p>
-                  <img
-                    src="/user.jpeg"
-                    alt=""
-                    style={{
-                      width: "50px",
-                      borderRadius: "50%",
-                      marginLeft: "10px",
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      localStorage.setItem("token", "");
+                      window.location.reload();
                     }}
-                  />
+                  >
+                    Logout
+                  </button>
                 </div>
               ) : (
                 <div className="d-flex">

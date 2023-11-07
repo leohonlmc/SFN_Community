@@ -88,14 +88,14 @@ function UserHome() {
           />
         </div>
       </div>
-      <div className="parent-demo-post">
+      {/* <div className="parent-demo-post">
         <div className="row demo-new-post">
           <div style={{ margin: "10px 0px" }}></div>
 
           <div className="col-md-6 col-12 demo-post"></div>
           <div className="col-md-6 col-12 demo-post"></div>
         </div>
-      </div>
+      </div> */}
 
       <Footer />
     </div>

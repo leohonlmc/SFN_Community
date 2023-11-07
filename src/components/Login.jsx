@@ -5,6 +5,8 @@ import Header from "./partial/Header";
 import Footer from "./partial/Footer";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const { REACT_APP_API_ENDPOINT } = process.env;
 
@@ -60,7 +62,8 @@ function Login() {
           credentials: "include",
         }
       );
-      console.log(data);
+      toast.success("Register successfully!");
+      setRegister(false);
     } catch (error) {
       console.log(error);
     }
@@ -80,15 +83,25 @@ function Login() {
           credentials: "include",
         }
       );
-      console.log(data);
+      toast.success("Login successfully!");
+      localStorage.setItem("token", data.token);
+      navigate("/food");
     } catch (error) {
       console.log(error);
     }
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div className="Login">
       <Header title="Login | SFN Community" />
+
+      <ToastContainer />
 
       {register ? (
         <section
@@ -109,7 +122,9 @@ function Login() {
                             alt="logo"
                           />
                           {client ? (
-                            <h4 className="mt-1 mb-4 pb-1">Client register</h4>
+                            <h4 className="mt-1 mb-4 pb-1">
+                              Operator register
+                            </h4>
                           ) : (
                             <h4 className="mt-1 mb-4 pb-1">User register</h4>
                           )}
@@ -129,7 +144,7 @@ function Login() {
                             style={{ textAlign: "center", cursor: "pointer" }}
                             onClick={() => setClient(true)}
                           >
-                            Are you our client?
+                            Are you our operator?
                           </p>
                         )}
 
@@ -271,7 +286,9 @@ function Login() {
                           </div>
 
                           <div className="d-flex align-items-center justify-content-center pb-4">
-                            <p className="mb-0 me-2">Our future client?</p>
+                            <p className="mb-0 me-2">
+                              Future food bank operator?
+                            </p>
                             <button
                               type="button"
                               className="btn btn-outline-danger"

@@ -15,19 +15,19 @@ function MultiItemCarousel() {
 
   const imageInfo = [
     {
-      src: "https://upload.wikimedia.org/wikipedia/en/e/ec/Feed_Ontario_logo.png",
-      title: "Feed Ontario",
+      src: "https://mma.prnewswire.com/media/964029/Sai_Dham_Food_Bank_Sai_Dham_Food_Bank_Announce_Fifth_Annual_Walk.jpg",
+      title: "Said Ham Food Bank",
       text: "",
-      link: "https://feedontario.ca/take-action-against-hunger/?gclid=Cj0KCQjwqP2pBhDMARIsAJQ0CzrSppJDMPEQkNYOmwTOqsFeimTDEoh5htBGHUhcX3OGlnbZ7NgbgnwaAve2EALw_wcB",
+      link: "https://saidhamfoodbank.com/?utm_source=Google&utm_medium=Maximum%20Conversion&utm_content=Drive%20traffic%20to%20homepage_SDFB&gclid=CjwKCAiA3aeqBhBzEiwAxFiOBg4HaPFX7PAQ3CCJ5vV5zMfXaY7YuY30vsPqYB-oCCOIdX37LLOehhoCqyAQAvD_BwE",
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Food_Banks_Canada_logo.svg/2560px-Food_Banks_Canada_logo.svg.png",
-      title: "Food Banks Canada",
+      src: "https://scarboroughfoodsecurityinitiative.myshopify.com/cdn/shop/files/Untitled_design-2_1200x1200.png?v=1614331973",
+      title: "Scarborough Food Security Initiative",
       text: "",
-      link: "https://web.foodbankscanada.ca/cn/avlfe/holiday-digital-1/?utm_campaign=12997_FBC_Holiday-Digital&utm_source=google&utm_medium=search&apl=DMHOLIDAY2023&pck=googlesearch&gad=1&gclid=Cj0KCQjwqP2pBhDMARIsAJQ0CzoM_inAXeouwCEa5qJ5qjWEg5FiHYuddwXtVR8RXaG_ibyzYDYUcoYaAiwZEALw_wcB",
+      link: "https://scarboroughfoodsecurityinitiative.com",
     },
     {
-      src: "https://mma.prnewswire.com/media/1220980/Daily_Bread_Food_Bank_Daily_Bread_Food_Bank_Study_Reveals_Food_I.jpg?p=facebook",
+      src: "https://mma.prnewswire.com/media/1772005/Daily_Bread_Food_Bank_Increase_in_Food_Bank_Visits_Directly_Asso.jpg?p=facebook",
       title: "Daily Bread Food Bank",
       text: "",
       link: "https://www.dailybread.ca/",
