@@ -18,13 +18,13 @@ function Home() {
 
   return (
     <div className="Home">
-      <Header title="One Community | SFN Community" />
+      <Header title="One Community | SFN Community" type="client" />
       <div className="sfn-container">
         <div className="sub-sfn-container">
           <h3 className="text">Welcome to</h3>
           <h1 className="text sfn">
             SCARBOROUGH FOOD NETWORK <br />
-            Community
+            Workbench
           </h1>
           <div className="connect-btn-div" onClick={() => navigate("/news")}>
             <button className="btn btn-success connect-btn">Connect</button>
@@ -38,12 +38,12 @@ function Home() {
         </div>
       </div>
 
-      <div className="food-bank-partners-div">
+      {/* <div className="food-bank-partners-div">
         <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
           FOOD BANK PARTNERS
         </h2>
         <MultiItemCarousel />
-      </div>
+      </div> */}
 
       <div className="slogan-div">
         <div className="flexbox" style={{ flex: 1, paddingRight: "20px" }}>

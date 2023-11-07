@@ -4,10 +4,87 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./partial/Header";
 import Footer from "./partial/Footer";
 import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
+
+const { REACT_APP_API_ENDPOINT } = process.env;
 
 function Login() {
   const navigate = useNavigate();
   const [register, setRegister] = useState(false);
+  const [client, setClient] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [represent, setRepresent] = useState("");
+  const [invitationCode, setInvitationCode] = useState("");
+
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleRepresent = (event) => {
+    setRepresent(event.target.value);
+  };
+
+  const handleInvitationCode = (event) => {
+    setInvitationCode(event.target.value);
+  };
+
+  const handleLoginEmail = (event) => {
+    setLoginEmail(event.target.value);
+  };
+
+  const handleLoginPassword = (event) => {
+    setLoginPassword(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await axios.post(
+        `${REACT_APP_API_ENDPOINT}/register`,
+        {
+          email,
+          password,
+          represent,
+          invitationCode,
+        },
+        {
+          withCredentials: true,
+          credentials: "include",
+        }
+      );
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await axios.post(
+        `${REACT_APP_API_ENDPOINT}/login`,
+        {
+          loginEmail,
+          loginPassword,
+        },
+        {
+          withCredentials: true,
+          credentials: "include",
+        }
+      );
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="Login">
@@ -15,75 +92,104 @@ function Login() {
 
       {register ? (
         <section
-          class="h-100 gradient-form"
+          className="h-100 gradient-form"
           style={{ backgroundColor: "#eee" }}
         >
-          <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-xl-10">
-                <div class="card rounded-3 text-black">
-                  <div class="row g-0">
-                    <div class="col-lg-6">
-                      <div class="card-body p-md-5 mx-md-4">
-                        <div class="text-center">
+          <div className="container py-5 h-100">
+            <div className="row d-flex justify-content-center align-items-center h-100">
+              <div className="col-xl-10">
+                <div className="card rounded-3 text-black">
+                  <div className="row g-0">
+                    <div className="col-lg-6">
+                      <div className="card-body p-md-5 mx-md-4">
+                        <div className="text-center">
                           <img
                             src="https://scarboroughfoodnetwork.ca/wp-content/uploads/2023/04/sfn-logo-green-filled-300x300-1.png"
                             style={{ width: "185px" }}
                             alt="logo"
                           />
-                          <h4 class="mt-1 mb-5 pb-1">Account register</h4>
+                          {client ? (
+                            <h4 className="mt-1 mb-4 pb-1">Client register</h4>
+                          ) : (
+                            <h4 className="mt-1 mb-4 pb-1">User register</h4>
+                          )}
                         </div>
 
-                        <form>
-                          <div class="form-outline mb-4">
+                        {client ? (
+                          <p
+                            className="mb-2"
+                            style={{ textAlign: "center", cursor: "pointer" }}
+                            onClick={() => setClient(false)}
+                          >
+                            Our user only?
+                          </p>
+                        ) : (
+                          <p
+                            className="mb-2"
+                            style={{ textAlign: "center", cursor: "pointer" }}
+                            onClick={() => setClient(true)}
+                          >
+                            Are you our client?
+                          </p>
+                        )}
+
+                        <form onSubmit={(e) => handleSubmit(e)}>
+                          <div className="form-outline mb-4">
                             <p style={{ textAlign: "right" }}>
                               Please fill in all area *
                             </p>
                             <input
                               type="email"
-                              class="form-control"
+                              className="form-control"
                               placeholder="Email address"
+                              onChange={handleEmail}
                             />
                           </div>
 
-                          <div class="form-outline mb-4">
+                          <div className="form-outline mb-4">
                             <input
                               type="password"
-                              class="form-control"
+                              className="form-control"
                               placeholder="Password"
+                              onChange={handlePassword}
                             />
                           </div>
 
-                          <div class="form-outline mb-4">
-                            <input
-                              type="represent"
-                              class="form-control"
-                              placeholder="Represent as"
-                            />
-                          </div>
+                          {client ? (
+                            <>
+                              <div className="form-outline mb-4">
+                                <input
+                                  type="represent"
+                                  className="form-control"
+                                  placeholder="Represent as"
+                                  onChange={handleRepresent}
+                                />
+                              </div>
+                              <div className="form-outline mb-4">
+                                <input
+                                  type="invitation"
+                                  className="form-control"
+                                  placeholder="Invitation code"
+                                  onChange={handleInvitationCode}
+                                />
+                              </div>
+                            </>
+                          ) : null}
 
-                          <div class="form-outline mb-4">
-                            <input
-                              type="invitation"
-                              class="form-control"
-                              placeholder="Invitation code"
-                            />
-                          </div>
-
-                          <div class="text-center pt-1 mb-5 pb-1">
+                          <div className="text-center pt-1 mb-5 pb-1">
                             <button
-                              class="btn btn-success btn-block fa-lg gradient-custom-2 mb-3"
-                              type="button"
+                              className="btn btn-success btn-block fa-lg gradient-custom-2 mb-3"
+                              type="submit"
                             >
                               Register
                             </button>
                           </div>
 
-                          <div class="d-flex align-items-center justify-content-center pb-4">
-                            <p class="mb-0 me-2">Already registered?</p>
+                          <div className="d-flex align-items-center justify-content-center pb-4">
+                            <p className="mb-0 me-2">Already registered?</p>
                             <button
                               type="button"
-                              class="btn btn-outline-danger"
+                              className="btn btn-outline-danger"
                               onClick={() => setRegister(false)}
                             >
                               Login
@@ -92,10 +198,12 @@ function Login() {
                         </form>
                       </div>
                     </div>
-                    <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-                      <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                        <h4 class="mb-4">We are more than just a Network</h4>
-                        <p class="small mb-0">
+                    <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
+                      <div className="text-white px-3 py-4 p-md-5 mx-md-4">
+                        <h4 className="mb-4">
+                          We are more than just a Network
+                        </h4>
+                        <p className="small mb-0">
                           <strong>Scarborough Food Network (SFN)</strong> is
                           dedicated to bridging Food Banks with communities,
                           fostering a cohesive network to combat hunger and
@@ -111,58 +219,62 @@ function Login() {
         </section>
       ) : (
         <section
-          class="h-100 gradient-form"
+          className="h-100 gradient-form"
           style={{ backgroundColor: "#eee" }}
         >
-          <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-xl-10">
-                <div class="card rounded-3 text-black">
-                  <div class="row g-0">
-                    <div class="col-lg-6">
-                      <div class="card-body p-md-5 mx-md-4">
-                        <div class="text-center">
+          <div className="container py-5 h-100">
+            <div className="row d-flex justify-content-center align-items-center h-100">
+              <div className="col-xl-10">
+                <div className="card rounded-3 text-black">
+                  <div className="row g-0">
+                    <div className="col-lg-6">
+                      <div className="card-body p-md-5 mx-md-4">
+                        <div className="text-center">
                           <img
                             src="https://scarboroughfoodnetwork.ca/wp-content/uploads/2023/04/sfn-logo-green-filled-300x300-1.png"
                             style={{ width: "185px" }}
                             alt="logo"
                           />
-                          <h4 class="mt-1 mb-5 pb-1">We are The Community</h4>
+                          <h4 className="mt-1 mb-5 pb-1">
+                            We are The Community
+                          </h4>
                         </div>
 
-                        <form>
+                        <form onSubmit={(e) => handleLogin(e)}>
                           <p>Please login to your account</p>
 
-                          <div class="form-outline mb-4">
+                          <div className="form-outline mb-4">
                             <input
                               type="email"
-                              class="form-control"
+                              className="form-control"
                               placeholder="Email address"
+                              onChange={handleLoginEmail}
                             />
                           </div>
 
-                          <div class="form-outline mb-4">
+                          <div className="form-outline mb-4">
                             <input
                               type="password"
-                              class="form-control"
+                              className="form-control"
                               placeholder="Password"
+                              onChange={handleLoginPassword}
                             />
                           </div>
 
-                          <div class="text-center pt-1 mb-5 pb-1">
+                          <div className="text-center pt-1 mb-5 pb-1">
                             <button
-                              class="btn btn-success btn-block fa-lg gradient-custom-2 mb-3"
-                              type="button"
+                              className="btn btn-success btn-block fa-lg gradient-custom-2 mb-3"
+                              type="submit"
                             >
                               Log in
                             </button>
                           </div>
 
-                          <div class="d-flex align-items-center justify-content-center pb-4">
-                            <p class="mb-0 me-2">Our future client?</p>
+                          <div className="d-flex align-items-center justify-content-center pb-4">
+                            <p className="mb-0 me-2">Our future client?</p>
                             <button
                               type="button"
-                              class="btn btn-outline-danger"
+                              className="btn btn-outline-danger"
                               onClick={() => setRegister(true)}
                             >
                               Create new
@@ -171,10 +283,12 @@ function Login() {
                         </form>
                       </div>
                     </div>
-                    <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-                      <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                        <h4 class="mb-4">We are more than just a Network</h4>
-                        <p class="small mb-0">
+                    <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
+                      <div className="text-white px-3 py-4 p-md-5 mx-md-4">
+                        <h4 className="mb-4">
+                          We are more than just a Network
+                        </h4>
+                        <p className="small mb-0">
                           <strong>Scarborough Food Network (SFN)</strong> is
                           dedicated to bridging Food Banks with communities,
                           fostering a cohesive network to combat hunger and

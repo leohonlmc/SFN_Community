@@ -54,67 +54,119 @@ function Header(props) {
             ></div>
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item active">
-                <a className="nav-link" href="#">
-                  Home
-                </a>
-              </li>
-
-              {localStorage.getItem("token") ? null : (
+          {props.type === "client" ? (
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item active">
-                  <a className="nav-link" href="/#/news">
-                    News Feed
+                  <a className="nav-link" href="/#/client">
+                    Home
                   </a>
                 </li>
-              )}
 
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  More
-                </a>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href="#">
-                    About SFN Community
+                {localStorage.getItem("token") ? null : (
+                  <li className="nav-item active">
+                    <a className="nav-link" href="/#/news">
+                      News Feed
+                    </a>
+                  </li>
+                )}
+
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    More
                   </a>
-                  <a className="dropdown-item" href="#">
-                    Contact
-                  </a>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdown"
+                  >
+                    <a className="dropdown-item" href="#">
+                      About SFN Community
+                    </a>
+                    <a className="dropdown-item" href="#">
+                      Contact
+                    </a>
+                  </div>
+                </li>
+              </ul>
+              {localStorage.getItem("token") ? (
+                <div className="d-flex justify-content-center align-items-center">
+                  <p className="m-0 mr-2" style={{ color: "white" }}>
+                    Welcome back!
+                  </p>
+                  <img
+                    src="/user.jpeg"
+                    alt=""
+                    style={{
+                      width: "50px",
+                      borderRadius: "50%",
+                      marginLeft: "10px",
+                    }}
+                  />
                 </div>
-              </li>
-            </ul>
-            {localStorage.getItem("token") ? (
-              <div className="d-flex justify-content-center align-items-center">
-                <p className="m-0 mr-2" style={{ color: "white" }}>
-                  Welcome back!
-                </p>
-                <img
-                  src="/user.jpeg"
-                  alt=""
-                  style={{
-                    width: "50px",
-                    borderRadius: "50%",
-                    marginLeft: "10px",
-                  }}
-                />
-              </div>
-            ) : (
-              <div className="d-flex">
-                <Link to="/login" className="btn btn-outline-success me-2">
-                  Client Login
-                </Link>
-              </div>
-            )}
-          </div>
+              ) : (
+                <div className="d-flex">
+                  <Link to="/login" className="btn btn-outline-success me-2">
+                    Client Login
+                  </Link>
+                </div>
+              )}
+            </div>
+          ) : (
+            //user
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item active">
+                  <a className="nav-link" href="/">
+                    Home
+                  </a>
+                </li>
+
+                {localStorage.getItem("token") ? null : (
+                  <li className="nav-item active">
+                    <a className="nav-link" href="/#/booking">
+                      Booking
+                    </a>
+                  </li>
+                )}
+              </ul>
+              {localStorage.getItem("token") ? (
+                <div className="d-flex justify-content-center align-items-center">
+                  <p className="m-0 mr-2" style={{ color: "white" }}>
+                    Welcome back!
+                  </p>
+                  <img
+                    src="/user.jpeg"
+                    alt=""
+                    style={{
+                      width: "50px",
+                      borderRadius: "50%",
+                      marginLeft: "10px",
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="d-flex">
+                  <Link to="/login" className="btn btn-outline-success me-2">
+                    User Login
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
         </nav>
       </div>
     </div>
