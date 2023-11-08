@@ -3,3 +3,4 @@ export { default as UserHome } from "./UserHome";
 export { default as FindFood } from "./FindFood";
 export { default as NewFeed } from "./NewFeed";
 export { default as Login } from "./Login";
+export { default as Result } from "./Result";

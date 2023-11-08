@@ -11,19 +11,41 @@ import {
   faCommentDots,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { set } from "mongoose";
+const { REACT_APP_API_ENDPOINT } = process.env;
 
 function FindFood() {
-  const location = ["All", "Toronto", "Mississauga", "Markham", "Scarborough"];
+  const navigate = useNavigate();
+  const [selectedLocation, setSelectedLocation] = useState(
+    localStorage.getItem("location") || "All"
+  );
+  const [selectedFoodBank, setSelectedFoodBank] = useState(
+    localStorage.getItem("foodBank") || "All"
+  );
+  const [selectedFoodCategory, setSelectedFoodCategory] = useState(
+    localStorage.getItem("foodCategory") || "All"
+  );
 
-  const foodBank = [
+  const [search, setSearch] = useState("");
+
+  const allLocation = [
     "All",
-    "Feed Ontario",
-    "Food Banks Canada",
-    "Daily Bread Food Bank",
-    "Second Harvest",
+    "Toronto",
+    "Mississauga",
+    "Markham",
+    "Scarborough",
   ];
 
-  const foodCategory = [
+  const allFoodBank = [
+    "All",
+    "Said Ham Food Bank",
+    "Scarborough Food Security Initiative",
+    "Daily Bread Food Bank",
+    "Cornerstone food bank",
+  ];
+
+  const allFoodCategory = [
     "All",
     "Fruits",
     "Vegetables",
@@ -33,8 +55,40 @@ function FindFood() {
     "Canned Goods",
     "Beverages",
     "Snacks",
-    "Others",
   ];
+
+  useEffect(() => {
+    localStorage.setItem("location", selectedLocation);
+  }, [selectedLocation]);
+
+  useEffect(() => {
+    localStorage.setItem("foodBank", selectedFoodBank);
+  }, [selectedFoodBank]);
+
+  useEffect(() => {
+    localStorage.setItem("foodCategory", selectedFoodCategory);
+  }, [selectedFoodCategory]);
+
+  const handleLocationChange = (e) => {
+    localStorage.setItem("location", e.target.value);
+    setSelectedLocation(e.target.value);
+  };
+
+  const handleFoodBankChange = (e) => {
+    localStorage.setItem("foodBank", e.target.value);
+    setSelectedFoodBank(e.target.value);
+  };
+
+  const handleFoodCategoryChange = (e) => {
+    localStorage.setItem("foodCategory", e.target.value);
+    setSelectedFoodCategory(e.target.value);
+  };
+
+  const handleSearchChange = (e) => {
+    console.log(e.target.value);
+    localStorage.setItem("food", e.target.value);
+    setSearch(e.target.value);
+  };
 
   return (
     <div className="Home">
@@ -54,10 +108,10 @@ function FindFood() {
                         <select
                           className="form-select"
                           aria-label=".form-select-sm example"
-                          // value={filter.replace("?sort=", "")}
-                          // onChange={(e) => handleSSelectChange(e, 0)}
+                          value={localStorage.getItem("location") || "All"}
+                          onChange={(e) => handleLocationChange(e)}
                         >
-                          {location.map((item, index) => (
+                          {allLocation.map((item, index) => (
                             <option value={item} key={index}>
                               {item}
                             </option>
@@ -69,10 +123,10 @@ function FindFood() {
                           className="form-select"
                           id="exampleFormControlSelect1"
                           aria-label=".form-select-sm example"
-                          // value={country.replace("?country=", "") || "Global"}
-                          // onChange={(e) => handleCountryChange(e)}
+                          value={localStorage.getItem("foodBank") || "All"}
+                          onChange={(e) => handleFoodBankChange(e)}
                         >
-                          {foodBank.map((item, index) => (
+                          {allFoodBank.map((item, index) => (
                             <option value={item} key={index}>
                               {item}
                             </option>
@@ -84,10 +138,10 @@ function FindFood() {
                           className="form-select"
                           id="exampleFormControlSelect1"
                           aria-label=".form-select-sm example"
-                          // value={country.replace("?country=", "") || "Global"}
-                          // onChange={(e) => handleCountryChange(e)}
+                          value={localStorage.getItem("foodCategory") || "All"}
+                          onChange={(e) => handleFoodCategoryChange(e)}
                         >
-                          {foodCategory.map((item, index) => (
+                          {allFoodCategory.map((item, index) => (
                             <option value={item} key={index}>
                               {item}
                             </option>
@@ -101,16 +155,14 @@ function FindFood() {
                           className="form-control"
                           id="search"
                           name="search"
-                          // onChange={handleSearchChange}
+                          onChange={(e) => handleSearchChange(e)}
                         />
                       </div>
                       <div
                         className="col-lg-1 col-md-1 col-sm-2 p-0 reset"
                         onClick={() => {
-                          localStorage.setItem("selectedFilter", "newest");
-                          localStorage.setItem("selectedCountry", "Global");
-                          localStorage.setItem("searchQuery", "");
-                          localStorage.setItem("currentPage", 1);
+                          localStorage.setItem("foodCategory", "All");
+                          localStorage.setItem("food", "");
                           window.location.reload();
                         }}
                       >
@@ -118,7 +170,7 @@ function FindFood() {
                       </div>
                       <div
                         className="col-lg-1 col-md-2 col-sm-1 p-0"
-                        onClick={() => window.location.reload()}
+                        onClick={() => navigate("/result")}
                         style={{ backgroundColor: "green" }}
                       >
                         <button className="btn btn-base">
@@ -144,6 +196,18 @@ function FindFood() {
                   </div>
                 </div>
               </div>
+            </div>
+
+            <br />
+
+            <div>
+              <span>You filtered: </span>
+              <span className="selected">{selectedLocation}</span>
+              <span className="selected">{selectedFoodBank}</span>
+              <span className="selected">{selectedFoodCategory}</span>
+              <br />
+              <br />
+              <span>{`Searching Keywords: ${search}`}</span>
             </div>
 
             <div className="food-category-div row">

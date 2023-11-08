@@ -33,10 +33,10 @@ function MultiItemCarousel() {
       link: "https://www.dailybread.ca/",
     },
     {
-      src: "https://blog.secondharvest.ca/wp-content/uploads/2022/02/Second-Harvest-Logo-2021-RGB-EN-1024x435.png",
-      title: "Second Harvest",
+      src: "https://cornerstonechurch.ca/wp-content/uploads/2019/03/Cornerstone-WEB.png",
+      title: "Cornerstone food bank",
       text: "",
-      link: "https://secondharvest.ca/",
+      link: "https://cornerstonechurch.ca/foodpantry/",
     },
   ];
 

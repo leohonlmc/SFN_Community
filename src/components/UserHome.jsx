@@ -26,10 +26,8 @@ function UserHome() {
             SCARBOROUGH FOOD NETWORK <br />
             Online Food Bank Service
           </h1>
-          <div className="connect-btn-div" onClick={() => navigate("/news")}>
-            <button className="btn btn-success connect-btn">
-              Start Booking
-            </button>
+          <div className="connect-btn-div" onClick={() => navigate("/food")}>
+            <button className="btn btn-success connect-btn">Start now</button>
           </div>
           <div style={{ padding: "10px 0px 10px 0px" }}>
             <p>

@@ -1,6 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import { UserHome, Home, NewFeed, Login, FindFood } from "./components";
+import { UserHome, Home, NewFeed, Login, FindFood, Result } from "./components";
 
 export default function App() {
   return (
@@ -11,6 +11,7 @@ export default function App() {
         <Route path="/news" element={<NewFeed />} />
         <Route path="/login" element={<Login />} />
         <Route path="/food" element={<FindFood />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
     </Router>
   );

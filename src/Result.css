@@ -1,0 +1,26 @@
+.result-container {
+  width: 95%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.results-div {
+  margin: 20px 0px;
+}
+
+.result-item-info {
+  display: flex;
+}
+
+.result-item {
+  margin-bottom: 40px;
+}
+
+.star-icon {
+  cursor: pointer;
+}
+
+h3 {
+  font-weight: bold;
+}
