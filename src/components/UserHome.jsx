@@ -104,7 +104,7 @@ function UserHome() {
         </div>
       </div>
 
-      {localStorage.getItem("represent") ? (
+      {localStorage.getItem("represent") !== "user" ? (
         <div className="parent-demo-post">
           <div className="row demo-new-post">
             <div style={{ margin: "10px 0px" }}>
