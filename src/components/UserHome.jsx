@@ -36,9 +36,22 @@ function UserHome() {
             </h1>
           )}
 
-          <div className="connect-btn-div" onClick={() => navigate("/food")}>
-            <button className="btn btn-success connect-btn">Start now</button>
-          </div>
+          {localStorage.getItem("represent") !== "user" ? (
+            <div
+              className="connect-btn-div"
+              onClick={() => navigate("/inventory")}
+            >
+              <button className="btn btn-success connect-btn">Start now</button>
+            </div>
+          ) : (
+            <div
+              className="connect-btn-div"
+              onClick={() => navigate("/inventory")}
+            >
+              <button className="btn btn-success connect-btn">Start now</button>
+            </div>
+          )}
+
           <div style={{ padding: "10px 0px 10px 0px" }}>
             <p>
               Scarborough Food Network (SFN) offers online booking from our food
