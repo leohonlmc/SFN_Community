@@ -45,7 +45,7 @@ function FaqSection() {
             aria-expanded="false"
             aria-controls="collapseTwo"
           >
-            Question 2: How do SFN do?
+            Question 2: What is our mission?
           </button>
         </h2>
         <div
