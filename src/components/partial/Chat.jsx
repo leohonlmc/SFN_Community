@@ -99,9 +99,9 @@ function Chat() {
                 {messages.map((message, index) => (
                   <div key={index} className="chat-message">
                     {message.role !== "user" ? (
-                      <span>user: </span>
-                    ) : (
                       <span>operator: </span>
+                    ) : (
+                      <span>user: </span>
                     )}
                     {message.text}{" "}
                     {/* Ensure that your message structure has a 'text' field */}
