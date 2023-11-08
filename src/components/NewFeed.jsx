@@ -25,7 +25,7 @@ function NewFeed() {
 
   return (
     <div className="News">
-      <Header title="News Feed | SFN Community" type="client" />
+      <Header title="News Feed | SFN Community" />
 
       {showPopup && <NewPost setShowPopup={setShowPopup} />}
 

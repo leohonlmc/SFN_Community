@@ -6,6 +6,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
 function Header(props) {
   const navigate = useNavigate();
@@ -139,44 +140,69 @@ function Header(props) {
                   </a>
                 </li>
 
-                <li className="nav-item active">
-                  <a className="nav-link" href="/#/food">
-                    Food Inquiry
-                  </a>
-                </li>
+                {localStorage.getItem("represent") ? null : (
+                  <li className="nav-item active">
+                    <a className="nav-link" href="/#/food">
+                      Food Inquiry
+                    </a>
+                  </li>
+                )}
 
-                <li className="nav-item active">
-                  <a className="nav-link" href="/#/donate">
-                    Donate
-                  </a>
-                </li>
+                {localStorage.getItem("represent") ? (
+                  <li className="nav-item active">
+                    <a className="nav-link" href="/#/inventory">
+                      Manage Inventory
+                    </a>
+                  </li>
+                ) : null}
+
+                {localStorage.getItem("represent") ? (
+                  <li className="nav-item active">
+                    <a className="nav-link" href="/#/news">
+                      News Feed
+                    </a>
+                  </li>
+                ) : null}
+
+                {!localStorage.getItem("token") ||
+                localStorage.getItem("represent") ? null : (
+                  <li className="nav-item active">
+                    <a className="nav-link" href="/#/donate">
+                      Donate
+                    </a>
+                  </li>
+                )}
               </ul>
               {localStorage.getItem("token") ? (
                 <>
-                  <div
-                    className="d-flex justify-content-center align-items-center"
-                    onClick={() => navigate("/wishlist")}
-                  >
-                    <div className="wishlist">
-                      <FontAwesomeIcon
-                        icon={faBookmark}
-                        style={{ color: "#0f78ce", marginRight: "10px" }}
-                        size="2xl"
-                      />
-                      <span
-                        style={{
-                          fontWeight: "bold",
-                          color: "white",
-                        }}
+                  <div className="d-flex justify-content-center align-items-center">
+                    {localStorage.getItem("represent") ? null : (
+                      <div
+                        className="wishlist"
+                        onClick={() => navigate("/wishlist")}
                       >
-                        Wishlist
-                      </span>
-                    </div>
+                        <FontAwesomeIcon
+                          icon={faBookmark}
+                          style={{ color: "#0f78ce", marginRight: "10px" }}
+                          size="2xl"
+                        />
+                        <span
+                          style={{
+                            fontWeight: "bold",
+                            color: "white",
+                          }}
+                        >
+                          Wishlist
+                        </span>
+                      </div>
+                    )}
 
                     <button
                       className="btn btn-danger"
                       onClick={() => {
                         localStorage.setItem("token", "");
+                        localStorage.setItem("user", "");
+                        localStorage.setItem("represent", "");
                         navigate("/");
                       }}
                     >

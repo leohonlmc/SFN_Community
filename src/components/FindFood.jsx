@@ -69,6 +69,10 @@ function FindFood() {
 
   useEffect(() => {
     localStorage.setItem("location", selectedLocation);
+
+    if (localStorage.getItem("represent")) {
+      navigate("/");
+    }
   }, [selectedLocation]);
 
   useEffect(() => {
@@ -106,7 +110,13 @@ function FindFood() {
       <div className="search-container parent-demo-post">
         <div className="search-div">
           <div className="search-area">
-            <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
+            <h2
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+                color: "white",
+              }}
+            >
               What you want to get today?
             </h2>
             <div className="card search-form">

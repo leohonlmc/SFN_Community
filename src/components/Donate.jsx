@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import Header from "./partial/Header";
 import Footer from "./partial/Footer";
+import { useNavigate, Link } from "react-router-dom";
 
 const Donate = () => {
   const [donationType, setDonationType] = useState("money");
   const [selectedFoodBank, setSelectedFoodBank] = useState("");
   const [selectedAmount, setSelectedAmount] = useState("");
   const [customAmount, setCustomAmount] = useState("");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token") || localStorage.getItem("represent")) {
+      navigate("/");
+    }
+  }, []);
 
   const handleDonation = (e) => {
     e.preventDefault();

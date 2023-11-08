@@ -1,4 +1,4 @@
-import "../Result.css";
+import "../Search.css";
 import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./partial/Header";
@@ -8,12 +8,15 @@ import MultiItemCarousel from "./partial/MultiItemCarousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { Container, Form, Button } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const { REACT_APP_API_ENDPOINT } = process.env;
 
-function Wishlist() {
-  const [error, setError] = useState(null);
+function Inventory() {
   const navigate = useNavigate();
+  const [Inventory, setInventory] = useState([]);
+  const [quantity, setQuantity] = useState(0);
 
   const [meat, setMeatData] = useState([]);
   const [fruits, setFruitsData] = useState([]);
@@ -26,11 +29,11 @@ function Wishlist() {
 
   const [loading, setLoading] = useState(true);
 
-  const fetchFoodData = () => {
+  useEffect(() => {
     axios
       .get(
-        `${process.env.REACT_APP_API_ENDPOINT}/wishlist/${localStorage.getItem(
-          "user"
+        `${process.env.REACT_APP_API_ENDPOINT}/foodbank/${localStorage.getItem(
+          "represent"
         )}`
       )
       .then((res) => {
@@ -47,6 +50,7 @@ function Wishlist() {
           Snacks: res.data.filter((food) => food.category === "Snacks"),
         };
 
+        // Now, only set state for those categories with data
         if (filteredData.Meat.length > 0) setMeatData(filteredData.Meat);
         if (filteredData.Fruits.length > 0) setFruitsData(filteredData.Fruits);
         if (filteredData.Vegetables.length > 0)
@@ -58,46 +62,13 @@ function Wishlist() {
         if (filteredData.Beverages.length > 0)
           setBeveragesData(filteredData.Beverages);
         if (filteredData.Snacks.length > 0) setSnacksData(filteredData.Snacks);
+
         setLoading(false);
       })
       .catch((err) => {
         console.error(err);
-        if (setError) setError(err);
       });
-  };
-
-  useEffect(() => {
-    if (!localStorage.getItem("token") || localStorage.getItem("represent")) {
-      navigate("/");
-    }
-
-    const intervalId = setInterval(() => {
-      fetchFoodData();
-    }, 100);
-
-    return () => clearInterval(intervalId);
   }, []);
-
-  const handleDelete = (id) => {
-    axios
-      .delete(
-        `${process.env.REACT_APP_API_ENDPOINT}/wishlist/${localStorage.getItem(
-          "user"
-        )}`,
-        {
-          data: {
-            id: id,
-          },
-        }
-      )
-      .then((res) => {
-        toast.success("Item deleted successfully!");
-      })
-      .catch((err) => {
-        console.error(err);
-        toast.error("Error deleting item!");
-      });
-  };
 
   function formatDate(isoDateString) {
     const date = new Date(isoDateString);
@@ -105,17 +76,36 @@ function Wishlist() {
     return date.toLocaleDateString("en-US", options);
   }
 
+  const handleQuantityChange = (e) => {
+    setQuantity(e.target.value);
+  };
+
+  const handleUpdate = async (id) => {
+    try {
+      const { data } = await axios.patch(
+        `${REACT_APP_API_ENDPOINT}/update/${id}`,
+        {
+          quantity,
+        },
+        {
+          withCredentials: true,
+          credentials: "include",
+        }
+      );
+      toast.success("Item quantity updated successfully!");
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="Home">
-      <Header title="Wishlist | SFN Community" />
+      <Header title="Manage | SFN Community" />
       <ToastContainer />
 
       <div className="result-container">
-        <h2>Wishlist</h2>
-        <p>
-          Track item availability in real-time and manage your wishlist
-          efficiently before visiting the food bank! ✅
-        </p>
+        <h2>Manage Inventory</h2>
 
         <hr />
 
@@ -138,6 +128,7 @@ function Wishlist() {
                         <th scope="col">Quantity</th>
                         <th scope="col">Expiration Date</th>
                         <th scope="col">Actions</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -148,11 +139,19 @@ function Wishlist() {
                           <td>{food.quantity}</td>
                           <td>{formatDate(food.expiration_date)}</td>
                           <td>
+                            <input
+                              type="number"
+                              className="ml-2"
+                              style={{ width: "100px" }}
+                              onChange={handleQuantityChange}
+                            />
+                          </td>
+                          <td>
                             <button
-                              className="btn btn-danger"
-                              onClick={() => handleDelete(food._id)}
+                              className="btn btn-success"
+                              onClick={(e) => handleUpdate(food._id)}
                             >
-                              Delete
+                              Update
                             </button>
                           </td>
                         </tr>
@@ -175,6 +174,7 @@ function Wishlist() {
                         <th scope="col">Quantity</th>
                         <th scope="col">Expiration Date</th>
                         <th scope="col">Actions</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -185,11 +185,19 @@ function Wishlist() {
                           <td>{food.quantity}</td>
                           <td>{formatDate(food.expiration_date)}</td>
                           <td>
+                            <input
+                              type="number"
+                              className="ml-2"
+                              style={{ width: "100px" }}
+                              onChange={handleQuantityChange}
+                            />
+                          </td>
+                          <td>
                             <button
-                              className="btn btn-danger"
-                              onClick={() => handleDelete(food._id)}
+                              className="btn btn-success"
+                              onClick={(e) => handleUpdate(food._id)}
                             >
-                              Delete
+                              Update
                             </button>{" "}
                           </td>
                         </tr>
@@ -213,6 +221,7 @@ function Wishlist() {
                         <th scope="col">Quantity</th>
                         <th scope="col">Expiration Date</th>
                         <th scope="col">Actions</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -223,11 +232,19 @@ function Wishlist() {
                           <td>{food.quantity}</td>
                           <td>{formatDate(food.expiration_date)}</td>
                           <td>
+                            <input
+                              type="number"
+                              className="ml-2"
+                              style={{ width: "100px" }}
+                              onChange={handleQuantityChange}
+                            />
+                          </td>
+                          <td>
                             <button
-                              className="btn btn-danger"
-                              onClick={() => handleDelete(food._id)}
+                              className="btn btn-success"
+                              onClick={(e) => handleUpdate(food._id)}
                             >
-                              Delete
+                              Update
                             </button>{" "}
                           </td>
                         </tr>
@@ -250,6 +267,7 @@ function Wishlist() {
                         <th scope="col">Quantity</th>
                         <th scope="col">Expiration Date</th>
                         <th scope="col">Actions</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -260,11 +278,19 @@ function Wishlist() {
                           <td>{food.quantity}</td>
                           <td>{formatDate(food.expiration_date)}</td>
                           <td>
+                            <input
+                              type="number"
+                              className="ml-2"
+                              style={{ width: "100px" }}
+                              onChange={handleQuantityChange}
+                            />
+                          </td>
+                          <td>
                             <button
-                              className="btn btn-danger"
-                              onClick={() => handleDelete(food._id)}
+                              className="btn btn-success"
+                              onClick={(e) => handleUpdate(food._id)}
                             >
-                              Delete
+                              Update
                             </button>{" "}
                           </td>
                         </tr>
@@ -287,6 +313,7 @@ function Wishlist() {
                         <th scope="col">Quantity</th>
                         <th scope="col">Expiration Date</th>
                         <th scope="col">Actions</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -297,11 +324,19 @@ function Wishlist() {
                           <td>{food.quantity}</td>
                           <td>{formatDate(food.expiration_date)}</td>
                           <td>
+                            <input
+                              type="number"
+                              className="ml-2"
+                              style={{ width: "100px" }}
+                              onChange={handleQuantityChange}
+                            />
+                          </td>
+                          <td>
                             <button
-                              className="btn btn-danger"
-                              onClick={() => handleDelete(food._id)}
+                              className="btn btn-success"
+                              onClick={(e) => handleUpdate(food._id)}
                             >
-                              Delete
+                              Update
                             </button>{" "}
                           </td>
                         </tr>
@@ -325,6 +360,7 @@ function Wishlist() {
                         <th scope="col">Quantity</th>
                         <th scope="col">Expiration Date</th>
                         <th scope="col">Actions</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -335,11 +371,19 @@ function Wishlist() {
                           <td>{food.quantity}</td>
                           <td>{formatDate(food.expiration_date)}</td>
                           <td>
+                            <input
+                              type="number"
+                              className="ml-2"
+                              style={{ width: "100px" }}
+                              onChange={handleQuantityChange}
+                            />
+                          </td>
+                          <td>
                             <button
-                              className="btn btn-danger"
-                              onClick={() => handleDelete(food._id)}
+                              className="btn btn-success"
+                              onClick={(e) => handleUpdate(food._id)}
                             >
-                              Delete
+                              Update
                             </button>{" "}
                           </td>
                         </tr>
@@ -363,6 +407,7 @@ function Wishlist() {
                         <th scope="col">Quantity</th>
                         <th scope="col">Expiration Date</th>
                         <th scope="col">Actions</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -373,11 +418,20 @@ function Wishlist() {
                           <td>{food.quantity}</td>
                           <td>{formatDate(food.expiration_date)}</td>
                           <td>
+                            <input
+                              type="number"
+                              className="ml-2"
+                              style={{ width: "100px" }}
+                              onChange={handleQuantityChange}
+                            />
+                          </td>
+
+                          <td>
                             <button
-                              className="btn btn-danger"
-                              onClick={() => handleDelete(food._id)}
+                              className="btn btn-success"
+                              onClick={(e) => handleUpdate(food._id)}
                             >
-                              Delete
+                              Update
                             </button>{" "}
                           </td>
                         </tr>
@@ -401,6 +455,7 @@ function Wishlist() {
                         <th scope="col">Quantity</th>
                         <th scope="col">Expiration Date</th>
                         <th scope="col">Actions</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -411,11 +466,19 @@ function Wishlist() {
                           <td>{food.quantity}</td>
                           <td>{formatDate(food.expiration_date)}</td>
                           <td>
+                            <input
+                              type="number"
+                              className="ml-2"
+                              style={{ width: "100px" }}
+                              onChange={handleQuantityChange}
+                            />
+                          </td>
+                          <td>
                             <button
-                              className="btn btn-danger"
-                              onClick={() => handleDelete(food._id)}
+                              className="btn btn-success"
+                              onClick={(e) => handleUpdate(food._id)}
                             >
-                              Delete
+                              Update
                             </button>{" "}
                           </td>
                         </tr>
@@ -433,4 +496,4 @@ function Wishlist() {
   );
 }
 
-export default Wishlist;
+export default Inventory;
