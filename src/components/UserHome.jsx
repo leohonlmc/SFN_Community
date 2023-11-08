@@ -48,7 +48,7 @@ function UserHome() {
         </div>
       </div>
 
-      {localStorage.getItem("represent") ? null : (
+      {localStorage.getItem("represent") !== "user" ? null : (
         <div className="food-bank-partners-div">
           <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
             FOOD BANK PARTNERS
