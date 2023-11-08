@@ -28,6 +28,8 @@ function FindFood() {
 
   const [search, setSearch] = useState("");
 
+  const token = localStorage.getItem("token");
+
   const allLocation = [
     "All",
     "Toronto",

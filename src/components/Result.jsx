@@ -21,6 +21,8 @@ function Result() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
+
   const location = localStorage.getItem("location");
   const foodBank = localStorage.getItem("foodBank");
   const category = localStorage.getItem("foodCategory"); // This was foodCategory in your code
@@ -108,10 +110,6 @@ function Result() {
   };
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
-      navigate("/");
-    }
-
     const localStorageDefaults = {
       location: "All",
       foodBank: "All",
@@ -135,7 +133,6 @@ function Result() {
   const handleOnSave = (saveItem) => {
     console.log(saveItem);
     axios
-
       .post(
         `${process.env.REACT_APP_API_ENDPOINT}/saveitem/${localStorage.getItem(
           "user"
@@ -193,15 +190,17 @@ function Result() {
                         <td>{food.item_name}</td>
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
-                        <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
-                        </td>
+                        {token ? (
+                          <td>
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              style={{ color: "#ffb800" }}
+                              size="xl"
+                              className="star-icon"
+                              onClick={() => handleOnSave(food)}
+                            />
+                          </td>
+                        ) : null}
                       </tr>
                     ))}
                   </tbody>
@@ -231,15 +230,17 @@ function Result() {
                         <td>{food.item_name}</td>
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
-                        <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
-                        </td>
+                        {token ? (
+                          <td>
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              style={{ color: "#ffb800" }}
+                              size="xl"
+                              className="star-icon"
+                              onClick={() => handleOnSave(food)}
+                            />
+                          </td>
+                        ) : null}
                       </tr>
                     ))}
                   </tbody>
@@ -270,15 +271,17 @@ function Result() {
                         <td>{food.item_name}</td>
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
-                        <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
-                        </td>
+                        {token ? (
+                          <td>
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              style={{ color: "#ffb800" }}
+                              size="xl"
+                              className="star-icon"
+                              onClick={() => handleOnSave(food)}
+                            />
+                          </td>
+                        ) : null}
                       </tr>
                     ))}
                   </tbody>
@@ -308,15 +311,17 @@ function Result() {
                         <td>{food.item_name}</td>
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
-                        <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
-                        </td>
+                        {token ? (
+                          <td>
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              style={{ color: "#ffb800" }}
+                              size="xl"
+                              className="star-icon"
+                              onClick={() => handleOnSave(food)}
+                            />
+                          </td>
+                        ) : null}
                       </tr>
                     ))}
                   </tbody>
@@ -346,15 +351,17 @@ function Result() {
                         <td>{food.item_name}</td>
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
-                        <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
-                        </td>
+                        {token ? (
+                          <td>
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              style={{ color: "#ffb800" }}
+                              size="xl"
+                              className="star-icon"
+                              onClick={() => handleOnSave(food)}
+                            />
+                          </td>
+                        ) : null}
                       </tr>
                     ))}
                   </tbody>
@@ -385,15 +392,17 @@ function Result() {
                         <td>{food.item_name}</td>
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
-                        <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
-                        </td>
+                        {token ? (
+                          <td>
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              style={{ color: "#ffb800" }}
+                              size="xl"
+                              className="star-icon"
+                              onClick={() => handleOnSave(food)}
+                            />
+                          </td>
+                        ) : null}
                       </tr>
                     ))}
                   </tbody>
@@ -424,15 +433,17 @@ function Result() {
                         <td>{food.item_name}</td>
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
-                        <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
-                        </td>
+                        {token ? (
+                          <td>
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              style={{ color: "#ffb800" }}
+                              size="xl"
+                              className="star-icon"
+                              onClick={() => handleOnSave(food)}
+                            />
+                          </td>
+                        ) : null}
                       </tr>
                     ))}
                   </tbody>
@@ -463,15 +474,17 @@ function Result() {
                         <td>{food.item_name}</td>
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
-                        <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
-                        </td>
+                        {token ? (
+                          <td>
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              style={{ color: "#ffb800" }}
+                              size="xl"
+                              className="star-icon"
+                              onClick={() => handleOnSave(food)}
+                            />
+                          </td>
+                        ) : null}
                       </tr>
                     ))}
                   </tbody>
