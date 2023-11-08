@@ -12,6 +12,8 @@ function Chat() {
   const [text, setText] = useState("");
   const userId = localStorage.getItem("user");
 
+  const role = localStorage.getItem("represent");
+
   const handleSendMessage = async (event) => {
     event.preventDefault();
     if (text.trim()) {
@@ -48,6 +50,7 @@ function Chat() {
         `${process.env.REACT_APP_API_ENDPOINT}/api/chat`
       );
       setMessages(response.data);
+      console.log(response.data);
     } catch (err) {
       console.error(err);
     }
@@ -55,6 +58,10 @@ function Chat() {
 
   useEffect(() => {
     const intervalId = setInterval(fetchMessages, 100);
+
+    if (role === "") {
+      localStorage.setItem("represent", "user");
+    }
 
     const handleEnter = (event) => {
       if (event.key === "Enter") {
@@ -91,8 +98,8 @@ function Chat() {
               <div className="chat-messages">
                 {messages.map((message, index) => (
                   <div key={index} className="chat-message">
-                    {message.role !== "" ? (
-                      <span>you: </span>
+                    {message.role !== "user" ? (
+                      <span>user: </span>
                     ) : (
                       <span>operator: </span>
                     )}
