@@ -156,13 +156,11 @@ function Header(props) {
                   </li>
                 ) : null}
 
-                {localStorage.getItem("represent") ? (
-                  <li className="nav-item active">
-                    <a className="nav-link" href="/#/news">
-                      News Feed
-                    </a>
-                  </li>
-                ) : null}
+                <li className="nav-item active">
+                  <a className="nav-link" href="/#/news">
+                    News Feed
+                  </a>
+                </li>
 
                 {!localStorage.getItem("token") ||
                 localStorage.getItem("represent") ? null : (

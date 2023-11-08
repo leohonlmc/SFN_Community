@@ -2,12 +2,42 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "../../Header.css";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import AWS from "aws-sdk";
 
-const { REACT_APP_API_ENDPOINT, REACT_APP_AWS } = process.env;
+const {
+  REACT_APP_BUCKET,
+  REACT_APP_API_ENDPOINT,
+  REACT_APP_ACCESS_ID,
+  REACT_APP_SECRET_ACCESS_ID,
+  REACT_APP_REGION,
+  REACT_APP_AWS,
+} = process.env;
+const token = localStorage.getItem("token");
+
+AWS.config.update({
+  accessKeyId: REACT_APP_ACCESS_ID,
+  secretAccessKey: REACT_APP_SECRET_ACCESS_ID,
+  region: REACT_APP_REGION,
+});
+
+const s3 = new AWS.S3({
+  params: {
+    Bucket: REACT_APP_BUCKET,
+  },
+});
 
 const NewPost = ({ setShowPopup, ...props }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(true);
-  const [des, setDes] = useState("");
+  const [description, setDes] = useState("");
+  const userId = localStorage.getItem("user");
+  const [loading, setLoading] = useState(false);
+
+  const [imageSrcs, setImageSrcs] = useState([]);
+  const [imageFiles, setImageFiles] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const closePopup = () => {
     setIsPopupVisible(false);
@@ -17,6 +47,75 @@ const NewPost = ({ setShowPopup, ...props }) => {
   const handleChange = (e) => {
     setDes(e.target.value);
   };
+
+  const handleFileChange = (event) => {
+    setImageFiles(randomString + event.target.files[0].name);
+    setSelectedFile(event.target.files[0]);
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      setImageSrcs(e.target.result);
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+
+  //upload image
+  const handleUpload = async () => {
+    setLoading(true);
+    if (selectedFile) {
+      const params = {
+        Key: imageFiles,
+        ContentType: selectedFile.type,
+        Body: selectedFile,
+        ACL: "public-read",
+      };
+
+      s3.upload(params, (err, data) => {
+        if (err) {
+          toast.error("Error uploading file", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+
+          console.log(err);
+        } else {
+          toast.success("File uploaded successfully");
+          setLoading(false);
+        }
+      });
+    }
+
+    try {
+      axios
+        .post(`${process.env.REACT_APP_API_ENDPOINT}/newsfeed`, {
+          userId: userId,
+          description: description,
+          images: imageFiles,
+        })
+        .then((res) => {
+          console.log(res.data);
+          toast.success("News feed added successfully!");
+        });
+    } catch (err) {}
+  };
+
+  function generateRandomString() {
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@$*";
+    let result = "";
+    for (let i = 0; i < 10; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      result += chars[randomIndex];
+    }
+    result += localStorage.getItem("id");
+    return result;
+  }
+
+  const randomString = generateRandomString();
 
   return (
     <div>
@@ -40,7 +139,7 @@ const NewPost = ({ setShowPopup, ...props }) => {
                   />
                 </div>
                 <div style={{ marginLeft: "10px" }}>
-                  <p style={{ margin: "0px" }}>Username</p>
+                  <p style={{ margin: "0px" }}>Operator</p>
                   <p style={{ margin: "0px" }}>Post to community</p>
                 </div>
               </div>
@@ -63,14 +162,22 @@ const NewPost = ({ setShowPopup, ...props }) => {
 
               <p
                 style={{ textAlign: "right", margin: "0px" }}
-              >{`${des.length}/1000 Characters`}</p>
+              >{`${description.length}/1000 Characters`}</p>
 
               <div className=" documents" style={{ marginBottom: "20px" }}>
-                <input type="file" name="" id="" style={{ width: "100%" }} />
+                <input
+                  type="file"
+                  onChange={handleFileChange}
+                  accept="image/*"
+                />{" "}
               </div>
               <hr />
 
-              <div className="d-flex" style={{ justifyContent: "flex-end" }}>
+              <div
+                className="d-flex"
+                style={{ justifyContent: "flex-end" }}
+                onClick={() => handleUpload()}
+              >
                 <button className="btn btn-secondary">Post</button>
               </div>
             </div>
@@ -149,8 +256,6 @@ const NewPost = ({ setShowPopup, ...props }) => {
               width: 80%;
             }
           }
-          
-
         `}
       </style>
     </div>
