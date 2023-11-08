@@ -213,6 +213,13 @@ function FindFood() {
               <div
                 className="category col-lg-3 col-md-4 col-sm-6"
                 data-content="Meat"
+                onClick={() => {
+                  localStorage.setItem("foodCategory", "Meat");
+                  localStorage.setItem("food", "");
+                  localStorage.setItem("location", "All");
+                  localStorage.setItem("foodBank", "All");
+                  navigate("/result");
+                }}
               >
                 <img
                   src="https://images.ctfassets.net/odk340ad2lwh/3NNWlojETBJLfQNuDqgwSb/c8675eb4439f703ede5eddc3648743f1/WFC_7007_Chicken_Breast_Fillets_Raw.jpg?fm=webp&w=1920&h=1080"
@@ -224,6 +231,13 @@ function FindFood() {
               <div
                 className="category col-lg-3 col-md-4 col-sm-6"
                 data-content="Vegetable"
+                onClick={() => {
+                  localStorage.setItem("foodCategory", "Vegetables");
+                  localStorage.setItem("food", "");
+                  localStorage.setItem("location", "All");
+                  localStorage.setItem("foodBank", "All");
+                  navigate("/result");
+                }}
               >
                 <img
                   src="https://www.cnet.com/a/img/resize/fc685ebed35c7b1c5f4bcf6a6ce884e728d5d74d/hub/2022/06/23/259f9d31-e96c-4e9b-8c14-edd08798430b/twitter-hq-headquarters-02075.jpg?auto=webp&fit=crop&height=1200&width=1200"
@@ -234,7 +248,14 @@ function FindFood() {
               </div>
               <div
                 className="category col-lg-3 col-md-4 col-sm-6"
-                data-content="Canned Food"
+                data-content="Canned Goods"
+                onClick={() => {
+                  localStorage.setItem("foodCategory", "Canned Goods");
+                  localStorage.setItem("food", "");
+                  localStorage.setItem("location", "All");
+                  localStorage.setItem("foodBank", "All");
+                  navigate("/result");
+                }}
               >
                 <img
                   src="https://www.eatingwell.com/thmb/w1U6mpaeSe8XIkuYqkVDXO6vasQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cans-953d721826164ce0bb04cc0bf51a4396.jpg"
@@ -246,6 +267,13 @@ function FindFood() {
               <div
                 className="category col-lg-3 col-md-4 col-sm-6"
                 data-content="Beverages"
+                onClick={() => {
+                  localStorage.setItem("foodCategory", "Beverages");
+                  localStorage.setItem("food", "");
+                  localStorage.setItem("location", "All");
+                  localStorage.setItem("foodBank", "All");
+                  navigate("/result");
+                }}
               >
                 <img
                   src="https://hips.hearstapps.com/hmg-prod/images/publix-grocery-store-sports-drinks-display-news-photo-1593204642.jpg?crop=0.66699xw:1xh;center,top&resize=640:*"

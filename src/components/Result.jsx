@@ -323,7 +323,7 @@ function Result() {
 
           {cannedGoods && cannedGoods.length > 0 ? (
             <>
-              <h2>Canned Food</h2>
+              <h3>Canned Food</h3>
 
               <div className="result-item table-responsive">
                 <table className="table">

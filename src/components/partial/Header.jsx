@@ -3,9 +3,11 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header(props) {
+  const navigate = useNavigate();
+
   return (
     <div className="Header">
       <HelmetProvider>
@@ -147,7 +149,7 @@ function Header(props) {
                     className="btn btn-danger"
                     onClick={() => {
                       localStorage.setItem("token", "");
-                      window.location.reload();
+                      navigate("/");
                     }}
                   >
                     Logout
