@@ -6,12 +6,7 @@ import Footer from "./partial/Footer";
 import { useNavigate, Link } from "react-router-dom";
 import MultiItemCarousel from "./partial/MultiItemCarousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faThumbsUp,
-  faCommentDots,
-  faXmark,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faStar, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -45,8 +40,7 @@ function Result() {
   const [cannedGoods, setCannedGoodsData] = useState([]);
   const [beverages, setBeveragesData] = useState([]);
   const [snacks, setSnacksData] = useState([]);
-
-  const [saveItem, setSaveItem] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const constructQuery = () => {
     const query = {};
@@ -102,6 +96,8 @@ function Result() {
         if (filteredData.Beverages.length > 0)
           setBeveragesData(filteredData.Beverages);
         if (filteredData.Snacks.length > 0) setSnacksData(filteredData.Snacks);
+
+        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
@@ -167,332 +163,338 @@ function Result() {
 
         <hr />
 
-        <div className="results-div">
-          {meat && meat.length > 0 ? (
-            <>
-              {" "}
-              <h3>Meat</h3>
-              <div className="result-item table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Food Bank</th>
-                      <th scope="col">Item Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Expiration Date</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {meat.map((food, index) => (
-                      <tr key={index}>
-                        <td>{food.foodBank}</td>
-                        <td>{food.item_name}</td>
-                        <td>{food.quantity}</td>
-                        <td>{formatDate(food.expiration_date)}</td>
-                        {token ? (
-                          <td>
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              style={{ color: "#ffb800" }}
-                              size="xl"
-                              className="star-icon"
-                              onClick={() => handleOnSave(food)}
-                            />
-                          </td>
-                        ) : null}
+        {loading ? (
+          <div style={{ textAlign: "center", margin: "50px 0px" }}>
+            <FontAwesomeIcon icon={faSpinner} spin size="2xl" />
+          </div>
+        ) : (
+          <div className="results-div">
+            {meat && meat.length > 0 ? (
+              <>
+                {" "}
+                <h3>Meat</h3>
+                <div className="result-item table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Food Bank</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Expiration Date</th>
+                        <th scope="col">Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) : null}
+                    </thead>
+                    <tbody>
+                      {meat.map((food, index) => (
+                        <tr key={index}>
+                          <td>{food.foodBank}</td>
+                          <td>{food.item_name}</td>
+                          <td>{food.quantity}</td>
+                          <td>{formatDate(food.expiration_date)}</td>
+                          {token ? (
+                            <td>
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                style={{ color: "#ffb800" }}
+                                size="xl"
+                                className="star-icon"
+                                onClick={() => handleOnSave(food)}
+                              />
+                            </td>
+                          ) : null}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : null}
 
-          {fruits && fruits.length > 0 ? (
-            <>
-              <h3>Fruits</h3>
-              <div className="result-item table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Food Bank</th>
-                      <th scope="col">Item Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Expiration Date</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {fruits.map((food, index) => (
-                      <tr key={index}>
-                        <td>{food.foodBank}</td>
-                        <td>{food.item_name}</td>
-                        <td>{food.quantity}</td>
-                        <td>{formatDate(food.expiration_date)}</td>
-                        {token ? (
-                          <td>
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              style={{ color: "#ffb800" }}
-                              size="xl"
-                              className="star-icon"
-                              onClick={() => handleOnSave(food)}
-                            />
-                          </td>
-                        ) : null}
+            {fruits && fruits.length > 0 ? (
+              <>
+                <h3>Fruits</h3>
+                <div className="result-item table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Food Bank</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Expiration Date</th>
+                        <th scope="col">Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) : null}
+                    </thead>
+                    <tbody>
+                      {fruits.map((food, index) => (
+                        <tr key={index}>
+                          <td>{food.foodBank}</td>
+                          <td>{food.item_name}</td>
+                          <td>{food.quantity}</td>
+                          <td>{formatDate(food.expiration_date)}</td>
+                          {token ? (
+                            <td>
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                style={{ color: "#ffb800" }}
+                                size="xl"
+                                className="star-icon"
+                                onClick={() => handleOnSave(food)}
+                              />
+                            </td>
+                          ) : null}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : null}
 
-          {vegetables && vegetables.length > 0 ? (
-            <>
-              {" "}
-              <h3>Vegetables</h3>
-              <div className="result-item table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Food Bank</th>
-                      <th scope="col">Item Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Expiration Date</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {vegetables.map((food, index) => (
-                      <tr key={index}>
-                        <td>{food.foodBank}</td>
-                        <td>{food.item_name}</td>
-                        <td>{food.quantity}</td>
-                        <td>{formatDate(food.expiration_date)}</td>
-                        {token ? (
-                          <td>
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              style={{ color: "#ffb800" }}
-                              size="xl"
-                              className="star-icon"
-                              onClick={() => handleOnSave(food)}
-                            />
-                          </td>
-                        ) : null}
+            {vegetables && vegetables.length > 0 ? (
+              <>
+                {" "}
+                <h3>Vegetables</h3>
+                <div className="result-item table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Food Bank</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Expiration Date</th>
+                        <th scope="col">Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) : null}
+                    </thead>
+                    <tbody>
+                      {vegetables.map((food, index) => (
+                        <tr key={index}>
+                          <td>{food.foodBank}</td>
+                          <td>{food.item_name}</td>
+                          <td>{food.quantity}</td>
+                          <td>{formatDate(food.expiration_date)}</td>
+                          {token ? (
+                            <td>
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                style={{ color: "#ffb800" }}
+                                size="xl"
+                                className="star-icon"
+                                onClick={() => handleOnSave(food)}
+                              />
+                            </td>
+                          ) : null}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : null}
 
-          {dairy && dairy.length > 0 ? (
-            <>
-              <h3>Dairy</h3>
-              <div className="result-item table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Food Bank</th>
-                      <th scope="col">Item Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Expiration Date</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {dairy.map((food, index) => (
-                      <tr key={index}>
-                        <td>{food.foodBank}</td>
-                        <td>{food.item_name}</td>
-                        <td>{food.quantity}</td>
-                        <td>{formatDate(food.expiration_date)}</td>
-                        {token ? (
-                          <td>
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              style={{ color: "#ffb800" }}
-                              size="xl"
-                              className="star-icon"
-                              onClick={() => handleOnSave(food)}
-                            />
-                          </td>
-                        ) : null}
+            {dairy && dairy.length > 0 ? (
+              <>
+                <h3>Dairy</h3>
+                <div className="result-item table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Food Bank</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Expiration Date</th>
+                        <th scope="col">Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) : null}
+                    </thead>
+                    <tbody>
+                      {dairy.map((food, index) => (
+                        <tr key={index}>
+                          <td>{food.foodBank}</td>
+                          <td>{food.item_name}</td>
+                          <td>{food.quantity}</td>
+                          <td>{formatDate(food.expiration_date)}</td>
+                          {token ? (
+                            <td>
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                style={{ color: "#ffb800" }}
+                                size="xl"
+                                className="star-icon"
+                                onClick={() => handleOnSave(food)}
+                              />
+                            </td>
+                          ) : null}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : null}
 
-          {grains && grains.length > 0 ? (
-            <>
-              <h3>Grains</h3>
-              <div className="result-item table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Food Bank</th>
-                      <th scope="col">Item Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Expiration Date</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {grains.map((food, index) => (
-                      <tr key={index}>
-                        <td>{food.foodBank}</td>
-                        <td>{food.item_name}</td>
-                        <td>{food.quantity}</td>
-                        <td>{formatDate(food.expiration_date)}</td>
-                        {token ? (
-                          <td>
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              style={{ color: "#ffb800" }}
-                              size="xl"
-                              className="star-icon"
-                              onClick={() => handleOnSave(food)}
-                            />
-                          </td>
-                        ) : null}
+            {grains && grains.length > 0 ? (
+              <>
+                <h3>Grains</h3>
+                <div className="result-item table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Food Bank</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Expiration Date</th>
+                        <th scope="col">Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) : null}
+                    </thead>
+                    <tbody>
+                      {grains.map((food, index) => (
+                        <tr key={index}>
+                          <td>{food.foodBank}</td>
+                          <td>{food.item_name}</td>
+                          <td>{food.quantity}</td>
+                          <td>{formatDate(food.expiration_date)}</td>
+                          {token ? (
+                            <td>
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                style={{ color: "#ffb800" }}
+                                size="xl"
+                                className="star-icon"
+                                onClick={() => handleOnSave(food)}
+                              />
+                            </td>
+                          ) : null}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : null}
 
-          {cannedGoods && cannedGoods.length > 0 ? (
-            <>
-              <h3>Canned Food</h3>
+            {cannedGoods && cannedGoods.length > 0 ? (
+              <>
+                <h3>Canned Food</h3>
 
-              <div className="result-item table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Food Bank</th>
-                      <th scope="col">Item Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Expiration Date</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cannedGoods.map((food, index) => (
-                      <tr key={index}>
-                        <td>{food.foodBank}</td>
-                        <td>{food.item_name}</td>
-                        <td>{food.quantity}</td>
-                        <td>{formatDate(food.expiration_date)}</td>
-                        {token ? (
-                          <td>
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              style={{ color: "#ffb800" }}
-                              size="xl"
-                              className="star-icon"
-                              onClick={() => handleOnSave(food)}
-                            />
-                          </td>
-                        ) : null}
+                <div className="result-item table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Food Bank</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Expiration Date</th>
+                        <th scope="col">Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) : null}
+                    </thead>
+                    <tbody>
+                      {cannedGoods.map((food, index) => (
+                        <tr key={index}>
+                          <td>{food.foodBank}</td>
+                          <td>{food.item_name}</td>
+                          <td>{food.quantity}</td>
+                          <td>{formatDate(food.expiration_date)}</td>
+                          {token ? (
+                            <td>
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                style={{ color: "#ffb800" }}
+                                size="xl"
+                                className="star-icon"
+                                onClick={() => handleOnSave(food)}
+                              />
+                            </td>
+                          ) : null}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : null}
 
-          {beverages && beverages.length > 0 ? (
-            <>
-              <h3>Beverages</h3>
+            {beverages && beverages.length > 0 ? (
+              <>
+                <h3>Beverages</h3>
 
-              <div className="result-item table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Food Bank</th>
-                      <th scope="col">Item Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Expiration Date</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {beverages.map((food, index) => (
-                      <tr key={index}>
-                        <td>{food.foodBank}</td>
-                        <td>{food.item_name}</td>
-                        <td>{food.quantity}</td>
-                        <td>{formatDate(food.expiration_date)}</td>
-                        {token ? (
-                          <td>
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              style={{ color: "#ffb800" }}
-                              size="xl"
-                              className="star-icon"
-                              onClick={() => handleOnSave(food)}
-                            />
-                          </td>
-                        ) : null}
+                <div className="result-item table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Food Bank</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Expiration Date</th>
+                        <th scope="col">Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) : null}
+                    </thead>
+                    <tbody>
+                      {beverages.map((food, index) => (
+                        <tr key={index}>
+                          <td>{food.foodBank}</td>
+                          <td>{food.item_name}</td>
+                          <td>{food.quantity}</td>
+                          <td>{formatDate(food.expiration_date)}</td>
+                          {token ? (
+                            <td>
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                style={{ color: "#ffb800" }}
+                                size="xl"
+                                className="star-icon"
+                                onClick={() => handleOnSave(food)}
+                              />
+                            </td>
+                          ) : null}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : null}
 
-          {snacks && snacks.length > 0 ? (
-            <>
-              {" "}
-              <h3>Snacks</h3>
-              <div className="result-item table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Food Bank</th>
-                      <th scope="col">Item Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Expiration Date</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {snacks.map((food, index) => (
-                      <tr key={index}>
-                        <td>{food.foodBank}</td>
-                        <td>{food.item_name}</td>
-                        <td>{food.quantity}</td>
-                        <td>{formatDate(food.expiration_date)}</td>
-                        {token ? (
-                          <td>
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              style={{ color: "#ffb800" }}
-                              size="xl"
-                              className="star-icon"
-                              onClick={() => handleOnSave(food)}
-                            />
-                          </td>
-                        ) : null}
+            {snacks && snacks.length > 0 ? (
+              <>
+                {" "}
+                <h3>Snacks</h3>
+                <div className="result-item table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Food Bank</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Expiration Date</th>
+                        <th scope="col">Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) : null}
-        </div>
+                    </thead>
+                    <tbody>
+                      {snacks.map((food, index) => (
+                        <tr key={index}>
+                          <td>{food.foodBank}</td>
+                          <td>{food.item_name}</td>
+                          <td>{food.quantity}</td>
+                          <td>{formatDate(food.expiration_date)}</td>
+                          {token ? (
+                            <td>
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                style={{ color: "#ffb800" }}
+                                size="xl"
+                                className="star-icon"
+                                onClick={() => handleOnSave(food)}
+                              />
+                            </td>
+                          ) : null}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : null}
+          </div>
+        )}
       </div>
       <Footer />
     </div>

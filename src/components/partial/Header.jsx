@@ -141,7 +141,13 @@ function Header(props) {
 
                 <li className="nav-item active">
                   <a className="nav-link" href="/#/food">
-                    Food Tracking
+                    Food Inquiry
+                  </a>
+                </li>
+
+                <li className="nav-item active">
+                  <a className="nav-link" href="/">
+                    Donate
                   </a>
                 </li>
               </ul>
