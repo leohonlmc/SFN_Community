@@ -41,23 +41,40 @@ function NewFeed() {
 
       <div className="container-fluid mt-4">
         <div className="row">
-          <div className="col-md-2">
-            <div className="profile">
-              <img
-                src="/user.jpeg"
-                alt=""
-                style={{ width: "70px", borderRadius: "50%" }}
-              />
-              <p style={{ marginTop: "10px" }}>Operator</p>
-              <p>{localStorage.getItem("represent")}</p>
-              <div className="user-setting" style={{ textAlign: "left" }}>
-                <hr />
-                <p style={{ margin: "10px 0px" }}>News Feed</p>
-                <p style={{ margin: "10px 0px" }}>My post</p>
-                <p style={{ margin: "10px 0px" }}>Setting</p>
+          {localStorage.getItem("token") ? (
+            <div className="col-md-2">
+              <div className="profile">
+                <img
+                  src="/user.jpeg"
+                  alt=""
+                  style={{ width: "70px", borderRadius: "50%" }}
+                />
+                <p style={{ marginTop: "10px" }}>Account user</p>
+                <p>{localStorage.getItem("represent")}</p>
+                <div className="user-setting" style={{ textAlign: "left" }}>
+                  <hr />
+                  <p style={{ margin: "10px 0px" }}>News Feed</p>
+                  <p style={{ margin: "10px 0px" }}>My post</p>
+                  <p style={{ margin: "10px 0px" }}>Setting</p>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="col-md-2">
+              <div className="profile">
+                <img
+                  src="/user.jpeg"
+                  alt=""
+                  style={{ width: "70px", borderRadius: "50%" }}
+                />
+                <p style={{ marginTop: "10px" }}>Guest</p>
+                <div
+                  className="user-setting"
+                  style={{ textAlign: "left" }}
+                ></div>
+              </div>
+            </div>
+          )}
 
           <div className="col-md-7">
             {localStorage.getItem("represent") !== "user" ? (
