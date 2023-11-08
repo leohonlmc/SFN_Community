@@ -24,7 +24,8 @@ function NewFeed() {
     axios
       .get(`${process.env.REACT_APP_API_ENDPOINT}/api/newsfeed`)
       .then((res) => {
-        setNews(res.data);
+        //reverse the array
+        setNews(res.data.reverse());
       })
       .catch((err) => {
         console.error(err);
@@ -114,9 +115,9 @@ function NewFeed() {
                         <div className="user-info-child">
                           <p className="first">Operator</p>
                           <p className="second">Sai Dham Food Bank</p>
-                          <p className="third">
+                          {/* <p className="third">
                             {formatDateString(item.createdAt)}
-                          </p>
+                          </p> */}
                         </div>
                       </div>
 

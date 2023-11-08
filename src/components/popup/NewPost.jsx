@@ -97,7 +97,6 @@ const NewPost = ({ setShowPopup, ...props }) => {
           images: imageFiles,
         })
         .then((res) => {
-          console.log(res.data);
           toast.success("News feed added successfully!");
           window.location.reload();
         });
