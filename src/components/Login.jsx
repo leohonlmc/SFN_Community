@@ -288,9 +288,7 @@ function Login() {
                           </div>
 
                           <div className="d-flex align-items-center justify-content-center pb-4">
-                            <p className="mb-0 me-2">
-                              Future food bank operator?
-                            </p>
+                            <p className="mb-0 me-2">New user?</p>
                             <button
                               type="button"
                               className="btn btn-outline-danger"
