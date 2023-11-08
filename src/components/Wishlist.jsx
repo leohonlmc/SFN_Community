@@ -112,6 +112,10 @@ function Wishlist() {
 
       <div className="result-container">
         <h2>Wishlist</h2>
+        <p>
+          Track item availability in real-time and manage your wishlist
+          efficiently before visiting the food bank! ✅
+        </p>
 
         <hr />
 

@@ -12,7 +12,7 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-const { REACT_APP_API_ENDPOINT } = process.env;
+import NearestLocationFinder from "./function/NearestLocationFinder";
 
 function FindFood() {
   const navigate = useNavigate();
@@ -29,6 +29,15 @@ function FindFood() {
   const [search, setSearch] = useState("");
 
   const token = localStorage.getItem("token");
+
+  const myCoords = { lat: 43.70011, lng: -79.4163 };
+
+  const address = [
+    "7140 Goreway Dr, Mississauga, ON L4T 2T6",
+    "157 Byng Ave, Scarborough, ON M1L3P3",
+    "191 New Toronto Street Toronto, ON M8V 2E7",
+    "9680 Ninth Line, Markham, ON L6B 1A8",
+  ];
 
   const allLocation = [
     "All",
@@ -211,6 +220,8 @@ function FindFood() {
               <span>{`Searching Keywords: ${search}`}</span>
             </div>
 
+            <NearestLocationFinder setSelectedFoodBank={setSelectedFoodBank} />
+
             <div className="food-category-div row">
               <div
                 className="category col-lg-3 col-md-4 col-sm-6"
@@ -288,6 +299,7 @@ function FindFood() {
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );

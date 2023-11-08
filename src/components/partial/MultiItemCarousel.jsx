@@ -27,7 +27,7 @@ function MultiItemCarousel() {
       link: "https://scarboroughfoodsecurityinitiative.com",
     },
     {
-      src: "https://mma.prnewswire.com/media/1772005/Daily_Bread_Food_Bank_Increase_in_Food_Bank_Visits_Directly_Asso.jpg?p=facebook",
+      src: "https://dailybread.link2feed.ca/logo.png",
       title: "Daily Bread Food Bank",
       text: "",
       link: "https://www.dailybread.ca/",
