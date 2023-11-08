@@ -24,7 +24,7 @@ function UserHome() {
       <div className="sfn-container">
         <div className="sub-sfn-container">
           <h3 className="text">Welcome to</h3>
-          {localStorage.getItem("represent") ? (
+          {localStorage.getItem("represent") !== "user" ? (
             <h1 className="text sfn">
               SCARBOROUGH FOOD NETWORK <br />
               Workbench
