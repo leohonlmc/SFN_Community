@@ -75,7 +75,7 @@ const NearestLocationFinder = ({ setSelectedFoodBank }) => {
       <button
         className="btn btn-primary"
         onClick={getLocation}
-        style={{ marginRight: "10px" }}
+        style={{ marginRight: "10px", marginTop: "10px" }}
       >
         Get My Location
       </button>
@@ -83,6 +83,7 @@ const NearestLocationFinder = ({ setSelectedFoodBank }) => {
         className="btn btn-success"
         onClick={findNearestFoodBank}
         disabled={!myCoords}
+        style={{ marginTop: "10px" }}
       >
         Find Nearest Food Bank
       </button>

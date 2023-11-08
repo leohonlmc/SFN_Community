@@ -8,6 +8,7 @@ import {
   FindFood,
   Result,
   Wishlist,
+  Donate,
 } from "./components";
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/food" element={<FindFood />} />
         <Route path="/result" element={<Result />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/donate" element={<Donate />} />
       </Routes>
     </Router>
   );

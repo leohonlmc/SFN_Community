@@ -102,8 +102,8 @@ function FindFood() {
 
   return (
     <div className="Home">
-      <Header title="One Community | SFN Community" />
-      <div className="search-container">
+      <Header title="Food Inquiry | SFN Community" />
+      <div className="search-container parent-demo-post">
         <div className="search-div">
           <div className="search-area">
             <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
@@ -210,7 +210,7 @@ function FindFood() {
 
             <br />
 
-            <div>
+            <div className="filter-show">
               <span>You filtered: </span>
               <span className="selected">{selectedLocation}</span>
               <span className="selected">{selectedFoodBank}</span>
@@ -218,9 +218,11 @@ function FindFood() {
               <br />
               <br />
               <span>{`Searching Keywords: ${search}`}</span>
-            </div>
 
-            <NearestLocationFinder setSelectedFoodBank={setSelectedFoodBank} />
+              <NearestLocationFinder
+                setSelectedFoodBank={setSelectedFoodBank}
+              />
+            </div>
 
             <div className="food-category-div row">
               <div

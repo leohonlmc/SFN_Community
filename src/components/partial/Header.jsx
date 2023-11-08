@@ -146,7 +146,7 @@ function Header(props) {
                 </li>
 
                 <li className="nav-item active">
-                  <a className="nav-link" href="/">
+                  <a className="nav-link" href="/#/donate">
                     Donate
                   </a>
                 </li>
