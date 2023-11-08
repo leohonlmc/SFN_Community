@@ -48,14 +48,12 @@ function UserHome() {
         </div>
       </div>
 
-      {localStorage.getItem("represent") !== "user" ? null : (
-        <div className="food-bank-partners-div">
-          <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
-            FOOD BANK PARTNERS
-          </h2>
-          <MultiItemCarousel />
-        </div>
-      )}
+      <div className="food-bank-partners-div">
+        <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
+          FOOD BANK PARTNERS
+        </h2>
+        <MultiItemCarousel />
+      </div>
 
       <div className="slogan-div">
         <div className="flexbox" style={{ flex: 1, paddingRight: "20px" }}>
