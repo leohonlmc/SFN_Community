@@ -72,46 +72,50 @@ function Chat() {
   }, [text, messages]);
 
   return (
-    <div className="chat-container">
-      {!isChatOpen ? (
-        <div className="chat-icon" onClick={() => setIsChatOpen(true)}>
-          <FontAwesomeIcon
-            icon={faCommentDots}
-            style={{ color: "#00b57d" }}
-            size="2xl"
-          />
-        </div>
-      ) : (
-        <div className="chat-box">
-          <div className="close-icon" onClick={() => setIsChatOpen(false)}>
-            <FontAwesomeIcon icon={faXmark} size="lg" />
-          </div>
-          <div className="chat-messages">
-            {messages.map((message, index) => (
-              <div key={index} className="chat-message">
-                {message.role !== "" ? (
-                  <span>you: </span>
-                ) : (
-                  <span>operator: </span>
-                )}
-                {message.text}{" "}
-                {/* Ensure that your message structure has a 'text' field */}
+    <>
+      {localStorage.getItem("token") ? (
+        <div className="chat-container">
+          {!isChatOpen ? (
+            <div className="chat-icon" onClick={() => setIsChatOpen(true)}>
+              <FontAwesomeIcon
+                icon={faCommentDots}
+                style={{ color: "#00b57d" }}
+                size="2xl"
+              />
+            </div>
+          ) : (
+            <div className="chat-box">
+              <div className="close-icon" onClick={() => setIsChatOpen(false)}>
+                <FontAwesomeIcon icon={faXmark} size="lg" />
               </div>
-            ))}
-          </div>
-          <form className="chat-input-area" onSubmit={handleSendMessage}>
-            <input
-              type="text"
-              className="chat-input"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              placeholder="Type a message..."
-            />
-            {/* If you want a submit button add it here */}
-          </form>
+              <div className="chat-messages">
+                {messages.map((message, index) => (
+                  <div key={index} className="chat-message">
+                    {message.role !== "" ? (
+                      <span>you: </span>
+                    ) : (
+                      <span>operator: </span>
+                    )}
+                    {message.text}{" "}
+                    {/* Ensure that your message structure has a 'text' field */}
+                  </div>
+                ))}
+              </div>
+              <form className="chat-input-area" onSubmit={handleSendMessage}>
+                <input
+                  type="text"
+                  className="chat-input"
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                  placeholder="Type a message..."
+                />
+                {/* If you want a submit button add it here */}
+              </form>
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      ) : null}
+    </>
   );
 }
 
