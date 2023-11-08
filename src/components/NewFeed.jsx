@@ -58,37 +58,35 @@ function NewFeed() {
           </div>
 
           <div className="col-md-7">
-            <div className="new-post-div d-flex flex-column">
-              <div className="d-flex align-items-center">
-                <div>
-                  <img
-                    src="/user.jpeg"
-                    alt=""
-                    style={{ width: "50px", borderRadius: "50%" }}
-                  />
-                </div>
-                <div
-                  style={{ flex: 1, marginLeft: "10px" }}
-                  onClick={() => setShowPopup(true)}
-                >
-                  <input
-                    type="text"
-                    style={{
-                      height: "50px",
-                      borderRadius: "40px",
-                      width: "100%",
-                      border: "1px solid #ccc",
-                      padding: "0px 20px 0px 20px",
-                    }}
-                    placeholder="What's on your mind?"
-                  />
+            {localStorage.getItem("represent") ? (
+              <div className="new-post-div d-flex flex-column">
+                <div className="d-flex align-items-center">
+                  <div>
+                    <img
+                      src="/user.jpeg"
+                      alt=""
+                      style={{ width: "50px", borderRadius: "50%" }}
+                    />
+                  </div>
+                  <div
+                    style={{ flex: 1, marginLeft: "10px" }}
+                    onClick={() => setShowPopup(true)}
+                  >
+                    <input
+                      type="text"
+                      style={{
+                        height: "50px",
+                        borderRadius: "40px",
+                        width: "100%",
+                        border: "1px solid #ccc",
+                        padding: "0px 20px 0px 20px",
+                      }}
+                      placeholder="What's on your mind?"
+                    />
+                  </div>
                 </div>
               </div>
-
-              {/* <div className=" documents">
-                <input type="file" name="" id="" style={{ width: "100%" }} />
-              </div> */}
-            </div>
+            ) : null}
 
             <div className="divider-container">
               <hr className="divider-line" />
