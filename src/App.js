@@ -1,6 +1,14 @@
 import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import { UserHome, Home, NewFeed, Login, FindFood, Result } from "./components";
+import {
+  UserHome,
+  Home,
+  NewFeed,
+  Login,
+  FindFood,
+  Result,
+  Wishlist,
+} from "./components";
 
 export default function App() {
   return (
@@ -12,6 +20,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/food" element={<FindFood />} />
         <Route path="/result" element={<Result />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
     </Router>
   );

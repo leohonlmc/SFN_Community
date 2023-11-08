@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 function Header(props) {
   const navigate = useNavigate();
@@ -144,17 +146,38 @@ function Header(props) {
                 </li>
               </ul>
               {localStorage.getItem("token") ? (
-                <div className="d-flex justify-content-center align-items-center">
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      localStorage.setItem("token", "");
-                      navigate("/");
-                    }}
+                <>
+                  <div
+                    className="d-flex justify-content-center align-items-center"
+                    onClick={() => navigate("/wishlist")}
                   >
-                    Logout
-                  </button>
-                </div>
+                    <div className="wishlist">
+                      <FontAwesomeIcon
+                        icon={faBookmark}
+                        style={{ color: "#0f78ce", marginRight: "10px" }}
+                        size="2xl"
+                      />
+                      <span
+                        style={{
+                          fontWeight: "bold",
+                          color: "white",
+                        }}
+                      >
+                        Wishlist
+                      </span>
+                    </div>
+
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        localStorage.setItem("token", "");
+                        navigate("/");
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </>
               ) : (
                 <div className="d-flex">
                   <Link to="/login" className="btn btn-outline-success me-2">

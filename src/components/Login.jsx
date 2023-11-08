@@ -85,6 +85,7 @@ function Login() {
       );
       toast.success("Login successfully!");
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user", data.user);
       navigate("/food");
     } catch (error) {
       console.log(error);

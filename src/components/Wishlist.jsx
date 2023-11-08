@@ -17,7 +17,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const { REACT_APP_API_ENDPOINT } = process.env;
 
-function Result() {
+function Wishlist() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -46,34 +46,13 @@ function Result() {
 
   const [saveItem, setSaveItem] = useState({});
 
-  const constructQuery = () => {
-    const query = {};
-
-    if (location && location !== "All") {
-      query.location = location;
-    }
-
-    if (foodBank && foodBank !== "All") {
-      query.foodBank = foodBank;
-    }
-
-    if (category && category !== "All") {
-      query.category = category;
-    }
-
-    if (search && search.trim() !== "") {
-      query.search = search.trim();
-    }
-
-    return query;
-  };
-
   const fetchFoodData = () => {
-    const query = constructQuery();
-    const queryString = new URLSearchParams(query).toString();
-
     axios
-      .get(`${process.env.REACT_APP_API_ENDPOINT}/foodbanks?${queryString}`)
+      .get(
+        `${process.env.REACT_APP_API_ENDPOINT}/wishlist/${localStorage.getItem(
+          "user"
+        )}`
+      )
       .then((res) => {
         const filteredData = {
           Meat: res.data.filter((food) => food.category === "Meat"),
@@ -88,7 +67,6 @@ function Result() {
           Snacks: res.data.filter((food) => food.category === "Snacks"),
         };
 
-        // Now, only set state for those categories with data
         if (filteredData.Meat.length > 0) setMeatData(filteredData.Meat);
         if (filteredData.Fruits.length > 0) setFruitsData(filteredData.Fruits);
         if (filteredData.Vegetables.length > 0)
@@ -112,19 +90,6 @@ function Result() {
       navigate("/");
     }
 
-    const localStorageDefaults = {
-      location: "All",
-      foodBank: "All",
-      foodCategory: "All",
-      food: "",
-    };
-
-    Object.entries(localStorageDefaults).forEach(([key, value]) => {
-      if (localStorage.getItem(key) === null) {
-        localStorage.setItem(key, value);
-      }
-    });
-
     const intervalId = setInterval(() => {
       fetchFoodData();
     }, 100);
@@ -132,25 +97,24 @@ function Result() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const handleOnSave = (saveItem) => {
-    console.log(saveItem);
+  const handleDelete = (id) => {
     axios
-
-      .post(
-        `${process.env.REACT_APP_API_ENDPOINT}/saveitem/${localStorage.getItem(
+      .delete(
+        `${process.env.REACT_APP_API_ENDPOINT}/wishlist/${localStorage.getItem(
           "user"
         )}`,
-        saveItem
+        {
+          data: {
+            id: id,
+          },
+        }
       )
       .then((res) => {
-        console.log(res.data);
-        toast.success(
-          `Item: ${res.data.item} from ${res.data.foodbank} saved successfully!`
-        );
+        toast.success("Item deleted successfully!");
       })
       .catch((err) => {
         console.error(err);
-        if (setError) setError(err);
+        toast.error("Error deleting item!");
       });
   };
 
@@ -162,11 +126,11 @@ function Result() {
 
   return (
     <div className="Home">
-      <Header title="Search | SFN Community" />
+      <Header title="Wishlist | SFN Community" />
       <ToastContainer />
+
       <div className="result-container">
-        <h2>Search Result</h2>
-        <p>{`Location: ${location}, Food Bank: ${foodBank}, Category: ${category}, Keywords: ${search}`}</p>
+        <h2>Wishlist</h2>
 
         <hr />
 
@@ -194,13 +158,12 @@ function Result() {
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
                         <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => handleDelete(food._id)}
+                          >
+                            Delete
+                          </button>
                         </td>
                       </tr>
                     ))}
@@ -232,13 +195,7 @@ function Result() {
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
                         <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
+                          <button className="btn btn-danger">Delete</button>
                         </td>
                       </tr>
                     ))}
@@ -271,13 +228,7 @@ function Result() {
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
                         <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
+                          <button className="btn btn-danger">Delete</button>
                         </td>
                       </tr>
                     ))}
@@ -309,13 +260,7 @@ function Result() {
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
                         <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
+                          <button className="btn btn-danger">Delete</button>
                         </td>
                       </tr>
                     ))}
@@ -347,13 +292,7 @@ function Result() {
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
                         <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
+                          <button className="btn btn-danger">Delete</button>
                         </td>
                       </tr>
                     ))}
@@ -386,13 +325,7 @@ function Result() {
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
                         <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
+                          <button className="btn btn-danger">Delete</button>
                         </td>
                       </tr>
                     ))}
@@ -425,13 +358,7 @@ function Result() {
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
                         <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
+                          <button className="btn btn-danger">Delete</button>
                         </td>
                       </tr>
                     ))}
@@ -464,13 +391,7 @@ function Result() {
                         <td>{food.quantity}</td>
                         <td>{formatDate(food.expiration_date)}</td>
                         <td>
-                          <FontAwesomeIcon
-                            icon={faStar}
-                            style={{ color: "#ffb800" }}
-                            size="xl"
-                            className="star-icon"
-                            onClick={() => handleOnSave(food)}
-                          />
+                          <button className="btn btn-danger">Delete</button>
                         </td>
                       </tr>
                     ))}
@@ -486,4 +407,4 @@ function Result() {
   );
 }
 
-export default Result;
+export default Wishlist;
