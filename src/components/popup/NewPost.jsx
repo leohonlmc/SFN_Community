@@ -99,6 +99,7 @@ const NewPost = ({ setShowPopup, ...props }) => {
         .then((res) => {
           console.log(res.data);
           toast.success("News feed added successfully!");
+          window.location.reload();
         });
     } catch (err) {}
   };

@@ -11,6 +11,7 @@ import {
   faCommentDots,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
+import FaqSection from "./partial/FaqSection";
 
 function UserHome() {
   const navigate = useNavigate();
@@ -230,6 +231,19 @@ function UserHome() {
           </div>
         </div>
       ) : null}
+
+      <div
+        style={{
+          width: "95%",
+          margin: "auto",
+          marginTop: "30px",
+          marginBottom: "30px",
+        }}
+      >
+        <h2>FAQ Section</h2>
+
+        <FaqSection />
+      </div>
 
       <Footer />
     </div>
