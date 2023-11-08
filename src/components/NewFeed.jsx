@@ -60,7 +60,7 @@ function NewFeed() {
           </div>
 
           <div className="col-md-7">
-            {localStorage.getItem("represent") ? (
+            {localStorage.getItem("represent") !== "user" ? (
               <div className="new-post-div d-flex flex-column">
                 <div className="d-flex align-items-center">
                   <div>

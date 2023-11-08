@@ -70,7 +70,7 @@ function FindFood() {
   useEffect(() => {
     localStorage.setItem("location", selectedLocation);
 
-    if (localStorage.getItem("represent")) {
+    if (localStorage.getItem("represent") !== "user") {
       navigate("/");
     }
   }, [selectedLocation]);

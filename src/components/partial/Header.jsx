@@ -140,7 +140,7 @@ function Header(props) {
                   </a>
                 </li>
 
-                {localStorage.getItem("represent") ? null : (
+                {localStorage.getItem("represent") !== "user" ? null : (
                   <li className="nav-item active">
                     <a className="nav-link" href="/#/food">
                       Food Inquiry
@@ -148,7 +148,7 @@ function Header(props) {
                   </li>
                 )}
 
-                {localStorage.getItem("represent") ? (
+                {localStorage.getItem("represent") !== "user" ? (
                   <li className="nav-item active">
                     <a className="nav-link" href="/#/inventory">
                       Manage Inventory
@@ -163,7 +163,7 @@ function Header(props) {
                 </li>
 
                 {!localStorage.getItem("token") ||
-                localStorage.getItem("represent") ? null : (
+                localStorage.getItem("represent") !== "user" ? null : (
                   <li className="nav-item active">
                     <a className="nav-link" href="/#/donate">
                       Donate
@@ -174,7 +174,7 @@ function Header(props) {
               {localStorage.getItem("token") ? (
                 <>
                   <div className="d-flex justify-content-center align-items-center">
-                    {localStorage.getItem("represent") ? null : (
+                    {localStorage.getItem("represent") !== "user" ? null : (
                       <div
                         className="wishlist"
                         onClick={() => navigate("/wishlist")}
