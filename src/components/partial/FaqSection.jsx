@@ -27,10 +27,11 @@ function FaqSection() {
           style={{}}
         >
           <div class="accordion-body">
-            <strong>This forum is a community for software engineers</strong> to
-            engage in conversations covering a broad array of subjects such as
-            academia, course evaluations, job searches, programming, algorithmic
-            concepts, industry best practices, and career guidance.
+            <strong>
+              Scarborough Food Network is an organization involved in addressing
+              food insecurity in Scarborough, Toronto. We connect FoodBanks to
+              those in need.
+            </strong>
           </div>
         </div>
       </div>
@@ -56,8 +57,9 @@ function FaqSection() {
         >
           <div class="accordion-body">
             <strong>
-              You can join by signing up with your email or through other
-              platforms like Google.
+              Our mission and objectives centre around addressing issues related
+              to food security, hunger, and community well-being. We are
+              committed to making a positive impact on the issue of hunger
             </strong>{" "}
           </div>
         </div>
@@ -73,7 +75,7 @@ function FaqSection() {
             aria-expanded="false"
             aria-controls="collapseThree"
           >
-            Question 3: Is it free to join?
+            Question 3: Should users need a link2feed registration?
           </button>
         </h2>
         <div
@@ -84,7 +86,16 @@ function FaqSection() {
           style={{}}
         >
           <div class="accordion-body">
-            <strong>Absolutely!</strong> it is free to join.
+            <strong>Certainly!</strong>, you can complete your registration by
+            following this link:{" "}
+            <a
+              href="https://www.link2feed.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>{" "}
+            It's a simple and convenient process!"
           </div>
         </div>
       </div>

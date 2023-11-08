@@ -12,6 +12,7 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import FaqSection from "./partial/FaqSection";
+import Chat from "./partial/Chat";
 
 function UserHome() {
   const navigate = useNavigate();
@@ -244,6 +245,8 @@ function UserHome() {
 
         <FaqSection />
       </div>
+
+      {/* <Chat /> */}
 
       <Footer />
     </div>
