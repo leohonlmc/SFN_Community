@@ -11,6 +11,7 @@ import axios from "axios";
 import { Container, Form, Button } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Chat from "./partial/Chat";
 const { REACT_APP_API_ENDPOINT } = process.env;
 
 function Inventory() {
@@ -491,6 +492,8 @@ function Inventory() {
           </div>
         )}
       </div>
+
+      <Chat />
       <Footer />
     </div>
   );

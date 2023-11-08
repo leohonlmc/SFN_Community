@@ -13,6 +13,7 @@ import {
 import NewPost from "./popup/NewPost";
 import axios from "axios";
 import formatDateString from "./function/formatDateString";
+import Chat from "./partial/Chat";
 
 function NewFeed() {
   const navigate = useNavigate();
@@ -242,6 +243,8 @@ function NewFeed() {
                 <p>Oct. 25, 2023 1:18 p.m.</p>
               </div>
             </div>
+
+            <Chat />
             <Footer />
           </div>
         </div>

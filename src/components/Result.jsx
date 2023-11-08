@@ -10,6 +10,8 @@ import { faStar, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Chat from "./partial/Chat";
+
 const { REACT_APP_API_ENDPOINT } = process.env;
 
 function Result() {
@@ -496,6 +498,7 @@ function Result() {
           </div>
         )}
       </div>
+      <Chat />
       <Footer />
     </div>
   );

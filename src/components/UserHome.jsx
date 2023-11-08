@@ -246,7 +246,7 @@ function UserHome() {
         <FaqSection />
       </div>
 
-      {/* <Chat /> */}
+      <Chat />
 
       <Footer />
     </div>

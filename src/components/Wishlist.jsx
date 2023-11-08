@@ -10,6 +10,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Chat from "./partial/Chat";
 
 function Wishlist() {
   const [error, setError] = useState(null);
@@ -428,6 +429,7 @@ function Wishlist() {
           </div>
         )}
       </div>
+      <Chat />
       <Footer />
     </div>
   );

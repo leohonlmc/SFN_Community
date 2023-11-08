@@ -1,6 +1,80 @@
-.Chat {
+.chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chat-icon {
+  cursor: pointer;
+  /* additional styling */
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgb(236, 236, 236);
+}
+
+.chat-box {
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.close-icon {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.chat-content {
+  /* Style for the chat content area */
+  overflow-y: auto;
+  height: 100%;
+  padding: 10px;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  height: 350px; /* Adjust the height as needed, or use max-height */
+  overflow-y: scroll; /* This will add a scrollbar if the content overflows */
+  padding: 10px;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+}
+
+.chat-input-area {
+  display: flex; /* Add flex display to align children inline */
+  align-items: center; /* Align children vertically */
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  background-color: white; /* Match the color with chat-box for consistency */
+  border-radius: 5px;
+}
+
+.chat-input {
+  flex-grow: 1; /* Input will take up the remaining space */
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px; /* Adjust or remove margin if necessary */
+}
+
+.send-button {
+  padding: 8px 15px;
+  background-color: #00b57d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
