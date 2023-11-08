@@ -12,7 +12,6 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { set } from "mongoose";
 const { REACT_APP_API_ENDPOINT } = process.env;
 
 function FindFood() {
