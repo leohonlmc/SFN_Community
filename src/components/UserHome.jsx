@@ -41,13 +41,12 @@ function UserHome() {
               className="connect-btn-div"
               onClick={() => navigate("/inventory")}
             >
-              <button className="btn btn-success connect-btn">Start now</button>
+              <button className="btn btn-success connect-btn">
+                Start Manage
+              </button>
             </div>
           ) : (
-            <div
-              className="connect-btn-div"
-              onClick={() => navigate("/inventory")}
-            >
+            <div className="connect-btn-div" onClick={() => navigate("/food")}>
               <button className="btn btn-success connect-btn">Start now</button>
             </div>
           )}
