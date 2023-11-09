@@ -1,0 +1,209 @@
+[
+  {
+    "foodBank": "Sai Dham Food Bank",
+    "location": "Mississauga",
+    "category": "Meat",
+    "item_name": "Ground Beef",
+    "quantity": 75,
+    "expiration_date": "2023-06-15"
+  },
+  {
+    "foodBank": "Sai Dham Food Bank",
+    "location": "Mississauga",
+    "category": "Canned Goods",
+    "item_name": "Canned Soup",
+    "quantity": 60,
+    "expiration_date": "2023-09-20"
+  },
+  {
+    "foodBank": "Sai Dham Food Bank",
+    "location": "Mississauga",
+    "category": "Fresh Produce",
+    "item_name": "Apples",
+    "quantity": 90,
+    "expiration_date": "2023-11-10"
+  },
+  {
+    "foodBank": "Sai Dham Food Bank",
+    "location": "Mississauga",
+    "category": "Vegetables",
+    "item_name": "Carrots",
+    "quantity": 85,
+    "expiration_date": "2023-10-25"
+  },
+  {
+    "foodBank": "Sai Dham Food Bank",
+    "location": "Mississauga",
+    "category": "Bread",
+    "item_name": "Whole Wheat",
+    "quantity": 70,
+    "expiration_date": "2023-11-05"
+  },
+  {
+    "foodBank": "Scarborough Food Security Initiative",
+    "location": "Scarborough",
+    "category": "Meat",
+    "item_name": "Chicken Breast",
+    "quantity": 80,
+    "expiration_date": "2023-08-18"
+  },
+  {
+    "foodBank": "Scarborough Food Security Initiative",
+    "location": "Scarborough",
+    "category": "Canned Goods",
+    "item_name": "Canned Beans",
+    "quantity": 95,
+    "expiration_date": "2023-08-25"
+  },
+  {
+    "foodBank": "Scarborough Food Security Initiative",
+    "location": "Scarborough",
+    "category": "Fresh Produce",
+    "item_name": "Oranges",
+    "quantity": 75,
+    "expiration_date": "2023-11-12"
+  },
+  {
+    "foodBank": "Scarborough Food Security Initiative",
+    "location": "Scarborough",
+    "category": "Vegetables",
+    "item_name": "Spinach",
+    "quantity": 60,
+    "expiration_date": "2023-10-30"
+  },
+  {
+    "foodBank": "Scarborough Food Security Initiative",
+    "location": "Scarborough",
+    "category": "Bread",
+    "item_name": "Multigrain",
+    "quantity": 90,
+    "expiration_date": "2023-10-15"
+  },
+  {
+    "foodBank": "Daily Bread Food Bank",
+    "location": "Toronto",
+    "category": "Meat",
+    "item_name": "Pork Chops",
+    "quantity": 65,
+    "expiration_date": "2023-08-10"
+  },
+  {
+    "foodBank": "Daily Bread Food Bank",
+    "location": "Toronto",
+    "category": "Canned Goods",
+    "item_name": "Canned Tuna",
+    "quantity": 55,
+    "expiration_date": "2023-09-05"
+  },
+  {
+    "foodBank": "Daily Bread Food Bank",
+    "location": "Toronto",
+    "category": "Fresh Produce",
+    "item_name": "Bananas",
+    "quantity": 70,
+    "expiration_date": "2023-11-08"
+  },
+  {
+    "foodBank": "Daily Bread Food Bank",
+    "location": "Toronto",
+    "category": "Vegetables",
+    "item_name": "Bell Peppers",
+    "quantity": 80,
+    "expiration_date": "2023-10-20"
+  },
+  {
+    "foodBank": "Daily Bread Food Bank",
+    "location": "Toronto",
+    "category": "Bread",
+    "item_name": "Rye",
+    "quantity": 75,
+    "expiration_date": "2023-11-02"
+  },
+  {
+    "foodBank": "Cornerstone Food Bank",
+    "location": "Markham",
+    "category": "Meat",
+    "item_name": "Lamb Chops",
+    "quantity": 85,
+    "expiration_date": "2023-07-25"
+  },
+  {
+    "foodBank": "Cornerstone Food Bank",
+    "location": "Markham",
+    "category": "Canned Goods",
+    "item_name": "Canned Corn",
+    "quantity": 90,
+    "expiration_date": "2023-07-15"
+  },
+  {
+    "foodBank": "Cornerstone Food Bank",
+    "location": "Markham",
+    "category": "Fresh Produce",
+    "item_name": "Grapes",
+    "quantity": 95,
+    "expiration_date": "2023-11-08"
+  },
+  {
+    "foodBank": "Cornerstone Food Bank",
+    "location": "Markham",
+    "category": "Vegetables",
+    "item_name": "Zucchini",
+    "quantity": 65,
+    "expiration_date": "2023-10-28"
+  },
+  {
+    "foodBank": "Cornerstone Food Bank",
+    "location": "Markham",
+    "category": "Bread",
+    "item_name": "Baguette",
+    "quantity": 70,
+    "expiration_date": "2023-11-10"
+  },
+{
+    "foodBank": "Sai Dham Food Bank",
+    "location": "Mississauga",
+    "category": "Beverages",
+    "item_name": "Bottled Water",
+    "quantity": 100,
+    "expiration_date": "2024-01-01"
+  },
+  {
+    "foodBank": "Scarborough Food Security Initiative",
+    "location": "Scarborough",
+    "category": "Beverages",
+    "item_name": "Apple Juice",
+    "quantity": 80,
+    "expiration_date": "2023-12-15"
+  },
+  {
+    "foodBank": "Daily Bread Food Bank",
+    "location": "Toronto",
+    "category": "Beverages",
+    "item_name": "Orange Juice",
+    "quantity": 75,
+    "expiration_date": "2023-12-20"
+  },
+  {
+    "foodBank": "Cornerstone Food Bank",
+    "location": "Markham",
+    "category": "Beverages",
+    "item_name": "Milk",
+    "quantity": 90,
+    "expiration_date": "2023-12-25"
+  }
+]
+
+
+🎄 This Christmas, we are here to spread warmth and cheer to those in need. Join us on Christmas Day to grab a food hamper filled with love and essentials. Your presence is the greatest gift of all! 🎁❤️ #ChristmasHampers #CommunityLove #ShareTheJoy
+
+
+
+
+
+
+
+
+
+
+
+

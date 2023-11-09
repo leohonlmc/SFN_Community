@@ -201,7 +201,9 @@ function Header(props) {
                         localStorage.setItem("token", "");
                         localStorage.setItem("user", "");
                         localStorage.setItem("represent", "");
-                        navigate("/");
+                        setTimeout(() => {
+                          window.location.reload();
+                        }, 1000);
                       }}
                     >
                       Logout
