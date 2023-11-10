@@ -18,6 +18,15 @@ function UserHome() {
   const navigate = useNavigate();
   const [des, setDes] = useState("Angela, write something here...");
 
+  useEffect(() => {
+    if (
+      localStorage.getItem("represent") === "" ||
+      localStorage.getItem("represent") === null
+    ) {
+      localStorage.setItem("represent", "user");
+    }
+  }, []);
+
   return (
     <div className="Home">
       <Header title="One Community | SFN Community" />
@@ -36,7 +45,11 @@ function UserHome() {
             </h1>
           )}
 
-          {localStorage.getItem("represent") !== "user" ? (
+          {localStorage.getItem("represent") === "user" ? (
+            <div className="connect-btn-div" onClick={() => navigate("/food")}>
+              <button className="btn btn-success connect-btn">Start now</button>
+            </div>
+          ) : (
             <div
               className="connect-btn-div"
               onClick={() => navigate("/inventory")}
@@ -44,10 +57,6 @@ function UserHome() {
               <button className="btn btn-success connect-btn">
                 Start Manage
               </button>
-            </div>
-          ) : (
-            <div className="connect-btn-div" onClick={() => navigate("/food")}>
-              <button className="btn btn-success connect-btn">Start now</button>
             </div>
           )}
 

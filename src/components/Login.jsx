@@ -88,6 +88,10 @@ function Login() {
       localStorage.setItem("user", data.user);
       localStorage.setItem("represent", data.represent);
       navigate("/food");
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     } catch (error) {
       console.log(error);
     }
