@@ -19,7 +19,8 @@ function Chat() {
     if (text.trim()) {
       setMessages([...messages, text]);
 
-      await sendMessage();
+      // await sendMessage();
+      await sendMessageToBot();
 
       setText("");
     }
@@ -35,7 +36,36 @@ function Chat() {
           role: localStorage.getItem("represent"),
         }
       );
-      console.log(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const sendMessageBot = async (botMessage) => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_ENDPOINT}/chat`,
+        {
+          userId: "1234",
+          text: botMessage,
+          role: "bot",
+        }
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const sendMessageToBot = async () => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_BOT_ENDPOINT}/chatbot`,
+        {
+          message: text,
+        }
+      );
+      sendMessage();
+      sendMessageBot(response.data.response);
     } catch (err) {
       console.error(err);
     }
@@ -47,7 +77,6 @@ function Chat() {
         `${process.env.REACT_APP_API_ENDPOINT}/api/chat`
       );
       setMessages(response.data);
-      console.log(response.data);
     } catch (err) {
       console.error(err);
     }
@@ -105,12 +134,7 @@ function Chat() {
               <div className="chat-messages">
                 {messages.map((message, index) => (
                   <div key={index} className="chat-message">
-                    {message.role !== "user" ? (
-                      <span>operator: </span>
-                    ) : (
-                      <span>user: </span>
-                    )}
-                    {message.text}{" "}
+                    {`${message.role}: ${message.text}`}
                   </div>
                 ))}
               </div>

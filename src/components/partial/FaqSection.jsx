@@ -5,11 +5,11 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 function FaqSection() {
   return (
-    <div class="accordion w-100" id="basicAccordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
+    <div className="accordion w-100" id="basicAccordion">
+      <div className="accordion-item">
+        <h2 className="accordion-header" id="headingOne">
           <button
-            class="accordion-button collapsed"
+            className="accordion-button collapsed"
             type="button"
             data-mdb-toggle="collapse"
             data-mdb-target="#basicAccordionCollapseOne"
@@ -21,12 +21,12 @@ function FaqSection() {
         </h2>
         <div
           id="basicAccordionCollapseOne"
-          class="accordion-collapse collapse"
+          className="accordion-collapse collapse"
           aria-labelledby="headingOne"
           data-mdb-parent="#basicAccordion"
           style={{}}
         >
-          <div class="accordion-body">
+          <div className="accordion-body">
             <strong>
               Scarborough Food Network is an organization involved in addressing
               food insecurity in Scarborough, Toronto. We connect FoodBanks to
@@ -35,10 +35,10 @@ function FaqSection() {
           </div>
         </div>
       </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
+      <div className="accordion-item">
+        <h2 className="accordion-header" id="headingTwo">
           <button
-            class="accordion-button collapsed"
+            className="accordion-button collapsed"
             type="button"
             data-mdb-toggle="collapse"
             data-mdb-target="#basicAccordionCollapseTwo"
@@ -50,12 +50,12 @@ function FaqSection() {
         </h2>
         <div
           id="basicAccordionCollapseTwo"
-          class="accordion-collapse collapse"
+          className="accordion-collapse collapse"
           aria-labelledby="headingTwo"
           data-mdb-parent="#basicAccordion"
           style={{}}
         >
-          <div class="accordion-body">
+          <div className="accordion-body">
             <strong>
               Our mission and objectives centre around addressing issues related
               to food security, hunger, and community well-being. We are
@@ -65,10 +65,10 @@ function FaqSection() {
         </div>
       </div>
 
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
+      <div className="accordion-item">
+        <h2 className="accordion-header" id="headingThree">
           <button
-            class="accordion-button collapsed"
+            className="accordion-button collapsed"
             type="button"
             data-mdb-toggle="collapse"
             data-mdb-target="#basicAccordionCollapseThree"
@@ -80,12 +80,12 @@ function FaqSection() {
         </h2>
         <div
           id="basicAccordionCollapseThree"
-          class="accordion-collapse collapse"
+          className="accordion-collapse collapse"
           aria-labelledby="headingThree"
           data-mdb-parent="#basicAccordion"
           style={{}}
         >
-          <div class="accordion-body">
+          <div className="accordion-body">
             <strong>Certainly!</strong>, you can complete your registration by
             following this link:{" "}
             <a
