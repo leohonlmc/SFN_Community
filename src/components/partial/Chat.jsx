@@ -17,13 +17,10 @@ function Chat() {
   const handleSendMessage = async (event) => {
     event.preventDefault();
     if (text.trim()) {
-      // Add the new message to the messages array in the local state
       setMessages([...messages, text]);
 
-      // Call the function to send the message to the backend
       await sendMessage();
 
-      // Clear the input field
       setText("");
     }
   };
@@ -71,7 +68,6 @@ function Chat() {
 
     window.addEventListener("keydown", handleEnter);
 
-    // Cleanup function
     return () => {
       clearInterval(intervalId);
       window.removeEventListener("keydown", handleEnter);
@@ -92,9 +88,20 @@ function Chat() {
             </div>
           ) : (
             <div className="chat-box">
-              <div className="close-icon" onClick={() => setIsChatOpen(false)}>
-                <FontAwesomeIcon icon={faXmark} size="lg" />
+              <div className="chat-message-div-parent">
+                <div className="chat-message-div">
+                  <p style={{ paddingLeft: "10px", fontWeight: "bold" }}>
+                    Chat messages
+                  </p>
+                </div>
+                <div
+                  className="close-icon"
+                  onClick={() => setIsChatOpen(false)}
+                >
+                  <FontAwesomeIcon icon={faXmark} size="lg" />
+                </div>
               </div>
+
               <div className="chat-messages">
                 {messages.map((message, index) => (
                   <div key={index} className="chat-message">
@@ -104,7 +111,6 @@ function Chat() {
                       <span>user: </span>
                     )}
                     {message.text}{" "}
-                    {/* Ensure that your message structure has a 'text' field */}
                   </div>
                 ))}
               </div>
@@ -116,7 +122,6 @@ function Chat() {
                   onChange={(e) => setText(e.target.value)}
                   placeholder="Type a message..."
                 />
-                {/* If you want a submit button add it here */}
               </form>
             </div>
           )}

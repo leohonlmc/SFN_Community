@@ -7,11 +7,16 @@
 
 .chat-icon {
   cursor: pointer;
-  /* additional styling */
   padding: 15px;
   border-radius: 50%;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: rgb(236, 236, 236);
+  transition: 0.3s;
+}
+
+.chat-icon:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
 }
 
 .chat-box {
@@ -23,6 +28,15 @@
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
+}
+
+.chat-message-div-parent {
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-message-div {
+  margin-bottom: 5px;
 }
 
 .close-icon {
@@ -33,7 +47,6 @@
 }
 
 .chat-content {
-  /* Style for the chat content area */
   overflow-y: auto;
   height: 100%;
   padding: 10px;
@@ -54,20 +67,20 @@
 }
 
 .chat-input-area {
-  display: flex; /* Add flex display to align children inline */
-  align-items: center; /* Align children vertically */
+  display: flex;
+  align-items: center;
   border-top: 1px solid #ddd;
   padding: 10px;
-  background-color: white; /* Match the color with chat-box for consistency */
+  background-color: white;
   border-radius: 5px;
 }
 
 .chat-input {
-  flex-grow: 1; /* Input will take up the remaining space */
+  flex-grow: 1;
   padding: 8px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-right: 8px; /* Adjust or remove margin if necessary */
+  margin-right: 8px;
 }
 
 .send-button {
